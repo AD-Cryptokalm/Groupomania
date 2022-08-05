@@ -7,20 +7,23 @@ const jwt = require("JsonWebToken");
 // importer le model user
 const User = require("../models/User");
 
-
-
 // création compte
 exports.signup = (req, res, next) => {
+  const userObject = req.file
+    ? {
+        ...JSON.parse(req.body.user),
+        picture: `${req.protocol}://${req.get("host")}/images/${
+          req.file.filename
+        }`,
+      }
+    : { ...req.body };
+
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
       const user = new User({
-        pseudo: req.body.pseudo,
-        email: req.body.email,
+        ...userObject,
         password: hash,
-        // picture: `${req.protocol}://${req.get("host")}/images/${
-        //   req.file.filename
-        // }`,
       });
       user
         .save()
@@ -49,13 +52,9 @@ exports.login = (req, res, next) => {
             } else {
               res.status(200).json({
                 userId: user._id,
-                token: jwt.sign(
-                  { userId: user._id },
-                  'RANDOM_TOKEN_SECRET',
-                  {
-                    expiresIn: "24h",
-                  }
-                ),
+                token: jwt.sign({ userId: user._id }, "RANDOM_TOKEN_SECRET", {
+                  expiresIn: "24h",
+                }),
               });
             }
           })

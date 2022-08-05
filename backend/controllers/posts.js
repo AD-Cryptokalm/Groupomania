@@ -29,11 +29,13 @@ exports.createPost = (req, res, next) => {
           req.file.filename
         }`,
       }
-    : { ...req.auth.post };
+    : { ...req.body };
+
   const post = new Post({
     ...postObject,
     userId: req.auth.userId,
     message: req.body.message,
+    
     
   });
   post
@@ -51,13 +53,13 @@ exports.modifyPost = (req, res, next) => {
   const postObject = req.file
     ? {
         ...JSON.parse(req.body.post),
-        imageUrl: `${req.protocol}://${req.get("host")}/images/${
+        imageUrl: `${req.protocol}://${req.get("host")}/images/post/${
           req.file.filename
         }`,
       }
-    : { ...req.body };
+    : { ...req.auth.post };
 
-  delete postObject._userId;
+  
   Post.findOne({ _id: req.params.id })
     .then((post) => {
       if (post.userId != req.body.userId) {
@@ -83,7 +85,8 @@ exports.deletePost = (req, res, next) => {
       if (post.userId != req.body.userId) {
         res.status(401).json({ message: "Non autorisé !" });
       } else {
-        
+        const filename = user.picture.split("/images/post/")[1];
+        fs.unlink(`images/post/${filename}`, () => {
        
         Post.deleteOne({ _id: req.params.id })
           .then(() => {
@@ -91,7 +94,7 @@ exports.deletePost = (req, res, next) => {
           })
           .catch((error) => res.status(401).json({ error }));
         ;
-      }
+      })}
     })
     .catch((error) => res.status(400).json({ error }));
 };

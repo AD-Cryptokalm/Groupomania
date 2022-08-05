@@ -7,7 +7,7 @@ exports.updateUser = (req, res, next) => {
   const userObject = req.file
     ? {
         ...JSON.parse(req.body.user),
-        picture: `${req.protocol}://${req.get("host")}/images/${
+        picture: `${req.protocol}://${req.get("host")}/images/profil/${
           req.file.filename
         }`,
       }
@@ -42,8 +42,8 @@ exports.deleteUser = (req, res, next) => {
       if (user.userId != req.userId) {
         res.status(401).json({ message: "Non autorisé !" });
       } else {
-        const filename = user.picture.split("/images/")[1];
-        fs.unlink(`images/${filename}`, () => {
+        const filename = user.picture.split("/images/profil/")[1];
+        fs.unlink(`images/profil/${filename}`, () => {
           User.deleteOne({ _id: req.params.id })
             .then(() => {
               res.status(200).json({ message: "Profil supprimé !" });
@@ -57,7 +57,7 @@ exports.deleteUser = (req, res, next) => {
 
 exports.logout = (req, res, next) => {
   res.status(200).json({
-    userId: req.body.userId,
+    userId: req.auth.userId,
     token: "",
   });
 };
