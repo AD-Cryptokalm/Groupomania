@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
   pseudo: { type: String, required: true, minLenght: 2, maxLength: 25, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  picture: { type: String, default: "./uploads/profil/random-user.png"}
+  picture: { type: String, default: "./image/photo.jpg"}
 });
 
 userSchema.plugin(uniqueValidator);

@@ -7,7 +7,7 @@ exports.updateUser = (req, res, next) => {
   const userObject = req.file
     ? {
         ...JSON.parse(req.body.user),
-        imageUrl: `${req.protocol}://${req.get("host")}/images/${
+        picture: `${req.protocol}://${req.get("host")}/images/${
           req.file.filename
         }`,
       }
@@ -42,7 +42,7 @@ exports.deleteUser = (req, res, next) => {
       if (user.userId != req.userId) {
         res.status(401).json({ message: "Non autorisé !" });
       } else {
-        const filename = sauce.imageUrl.split("/images/")[1];
+        const filename = user.picture.split("/images/")[1];
         fs.unlink(`images/${filename}`, () => {
           User.deleteOne({ _id: req.params.id })
             .then(() => {

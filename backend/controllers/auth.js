@@ -18,9 +18,9 @@ exports.signup = (req, res, next) => {
         pseudo: req.body.pseudo,
         email: req.body.email,
         password: hash,
-        picture: `${req.protocol}://${req.get("host")}/images/${
-          req.file.filename
-        }`,
+        // picture: `${req.protocol}://${req.get("host")}/images/${
+        //   req.file.filename
+        // }`,
       });
       user
         .save()
@@ -51,7 +51,7 @@ exports.login = (req, res, next) => {
                 userId: user._id,
                 token: jwt.sign(
                   { userId: user._id },
-                  process.env.TOKEN_SECRET,
+                  'RANDOM_TOKEN_SECRET',
                   {
                     expiresIn: "24h",
                   }
