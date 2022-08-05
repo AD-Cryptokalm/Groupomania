@@ -12,7 +12,7 @@ const helmet = require("helmet");
 require('dotenv').config(); 
 
 // importer les routers
-const saucesRoutes = require("./routes/sauces");
+const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
 
 const path = require("path");
@@ -46,7 +46,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 // pour cette route utiliser la route saucesRoutes
-app.use("/api/sauces", saucesRoutes);
+app.use("/api/post", postsRoutes);
 // pour cette route utiliser la route userRoutes
 app.use("/api/user", userRoutes);
 
