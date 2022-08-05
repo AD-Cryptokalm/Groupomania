@@ -27,6 +27,9 @@ exports.createPost = (req, res, next) => {
     ...postObject,
     userId: req.auth.userId,
     message: req.body.message,
+    imageUrl: `${req.protocol}://${req.get("host")}/images/${
+      req.file.filename
+    }`,
   });
   post
     .save()

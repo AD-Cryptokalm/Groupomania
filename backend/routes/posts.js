@@ -10,17 +10,15 @@ const postsCtrl = require('../controllers/posts');
 const likesCtrl = require('../controllers/likes');
 
 
+
 router.get('/', auth, postsCtrl.getAllPost);
-
 router.get('/:id', auth, postsCtrl.getOnePost);
-
 router.post("/", auth, multer, postsCtrl.createPost);
-
 router.put('/:id', auth, multer, postsCtrl.modifyPost);
-
 router.delete('/:id', auth, multer, postsCtrl.deletePost); 
 
-router.post('/:id/like', auth, likesCtrl.creatLikePost);
+router.post('/:id/like', auth, likesCtrl.createLikePost);
+
 
 
 

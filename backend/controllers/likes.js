@@ -1,7 +1,7 @@
 const Post = require("../models/Post");
 
 // Ajout likes ou dislikes 
-exports.creatLikePost = (req, res, next) => {
+exports.createLikePost = (req, res, next) => {
   // identifier la post
   Post.findOne({ _id: req.params.id })
     .then((post) => {
@@ -12,13 +12,6 @@ exports.creatLikePost = (req, res, next) => {
         post.save();
       }
 
-      // Ajouter un dislike
-      if (req.body.like == -1) {
-        post.dislikes++;
-        post.usersDisliked.push(req.body.userId);
-        post.save();
-      }
-
       // changement de choix de like/dislike
       if (req.body.like == 0 && post.usersLiked.indexOf(req.body.userId) != -1 ) {
         if (post.likes >= 1) {
@@ -26,14 +19,6 @@ exports.creatLikePost = (req, res, next) => {
         post.usersLiked.pull(req.body.userId);
         post.save();
       }}
-
-      if (req.body.like == 0 && post.usersDisliked.indexOf(req.body.userId) != -1 ) {
-        if (post.dislikes >= 1) {
-          post.dislikes--;
-        post.usersDisliked.pull(req.body.userId);
-        post.save();
-      }}
-      
 
       res.status(200).json({ message: "Choix enregistré !" });
     })

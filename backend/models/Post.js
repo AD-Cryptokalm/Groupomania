@@ -5,25 +5,10 @@ const postSchema = mongoose.Schema(
   {
     userId: { type: String, required: true },
     message: { type: String, required: true },
-    imageUrl: { type: String},
-    video: { type: String},
-    // schema like/dislike
+    imageUrl: { type: String },
+    video: { type: String },
     likes: { type: Number, default: 0 },
-    dislikes: { type: Number, default: 0 },
     usersLiked: { type: [String] },
-    usersDisliked: { type: [String] },
-    //commentaires
-    comments: {
-      type: [
-        {
-          commenterId: String,
-          commenterPseudo: String,
-          text: String,
-          timestamp: Number,
-        },
-      ],
-      
-    },
   },
   { timestamps: true }
 );

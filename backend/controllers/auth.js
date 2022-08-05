@@ -4,8 +4,10 @@ const bcrypt = require("bcrypt");
 // importer la fonction jsonwebtoken
 const jwt = require("JsonWebToken");
 
-// importer le model user 
+// importer le model user
 const User = require("../models/User");
+
+
 
 // création compte
 exports.signup = (req, res, next) => {
@@ -16,6 +18,9 @@ exports.signup = (req, res, next) => {
         pseudo: req.body.pseudo,
         email: req.body.email,
         password: hash,
+        picture: `${req.protocol}://${req.get("host")}/images/${
+          req.file.filename
+        }`,
       });
       user
         .save()
@@ -30,7 +35,9 @@ exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
-        return res.status(401).json({ message: "Paire utilisateur/mot de passe incorecte !" });
+        return res
+          .status(401)
+          .json({ message: "Paire utilisateur/mot de passe incorecte !" });
       } else {
         bcrypt
           .compare(req.body.password, user.password)
@@ -39,18 +46,21 @@ exports.login = (req, res, next) => {
               return res
                 .status(401)
                 .json({ error: "Paire utilisateur/mot de passe incorecte !" });
-            }else{
-            res.status(200).json({
-              userId: user._id,
-              token: jwt.sign({ userId: user._id }, process.env.TOKEN_SECRET, {
-                expiresIn: "24h"
-              }),
-            });
-          }})
+            } else {
+              res.status(200).json({
+                userId: user._id,
+                token: jwt.sign(
+                  { userId: user._id },
+                  process.env.TOKEN_SECRET,
+                  {
+                    expiresIn: "24h",
+                  }
+                ),
+              });
+            }
+          })
           .catch((error) => res.status(500).json({ error }));
       }
     })
     .catch((error) => res.status(500).json({ error }));
 };
-
-
