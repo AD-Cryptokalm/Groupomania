@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 // schéma sauce
 const postSchema = mongoose.Schema(
   {
-    posterId: { type: String, required: true },
+    userId: { type: String, required: true },
     message: { type: String, required: true },
     imageUrl: { type: String},
     video: { type: String},
