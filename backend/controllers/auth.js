@@ -1,6 +1,12 @@
 // importer la fonction cryptage
 const bcrypt = require("bcrypt");
 
+// importer la fonction cryptage de mail
+const cryptojs = require("crypto-js");
+
+
+require('dotenv').config();
+
 // importer la fonction jsonwebtoken
 const jwt = require("JsonWebToken");
 
@@ -11,12 +17,15 @@ const User = require("../models/User");
 
 // création compte
 exports.signup = (req, res, next) => {
+
+const emailCryptoJs = cryptojs.HmacSHA256(req.body.email, `${process.env.CRYPTOJS_EMAIL}`).toString();
+
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
       const user = new User({
         pseudo: req.body.pseudo,
-        email: req.body.email,
+        email: emailCryptoJs,
         password: hash,
       });
       user

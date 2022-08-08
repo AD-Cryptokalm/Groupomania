@@ -1,9 +1,12 @@
 // importer express pour création des routes
 const express = require("express");
 
-const bodyParser = require("body-parser");
-// importer mongoose pour les schemas
+const morgan = require("morgan");
+
+// importer mongoose
 const mongoose = require("mongoose");
+
+
 
 // importer helmet
 const helmet = require("helmet");
@@ -28,6 +31,10 @@ mongoose
 
 // créer une application express
 const app = express();
+
+const bodyParser = require("body-parser");
+
+app.use(morgan("dev"));
 
 // autorisé l'utilisateur a se servir de notre Api
 app.use((req, res, next) => {

@@ -10,21 +10,24 @@ const fs = require("fs");
 // Voir tous les posts
 exports.getAllPost = (req, res, next) => {
   Post.find()
-    .then((posts) => res.status(200).json(posts))
+    .then((post) => res.status(200).json(post))
     .catch((error) => res.status(400).json({ error }));
 };
 
 // Ajouter un post
 exports.createPost = (req, res, next) => {
-  const postObject = req.body;
-  delete postObject._id;
-  delete postObject._userId;
+  const postObject = req.file
+    ? {
+        ...JSON.parse(req.body.post),
+        imageUrl: `${req.protocol}://${req.get("host")}/images/${
+          req.file.filename
+        }`,
+      }
+    : { ...req.body };
   const post = new Post({
     ...postObject,
     userId: req.body.userId,
-    imageUrl: `${req.protocol}://${req.get("host")}/images/${
-      req.file.filename
-    }`,
+    
   });
   post
     .save()
@@ -53,6 +56,7 @@ exports.createPost = (req, res, next) => {
 // };
 
 // Modifier un post
+
 exports.modifyPost = (req, res, next) => {
   Post.findOne({ _id: req.params.id })
     .then((post) => {
