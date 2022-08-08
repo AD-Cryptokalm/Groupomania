@@ -10,14 +10,17 @@ http://localhost:3000/api/user/signup
 http://localhost:3000/api/user/login
 
 ## Créer la fiche utilisateur POST
-http://localhost:3000/api/user/ficheUser
+http://localhost:3000/api/user/fiche_user
 
 ## Voir toutes les fiches utilisateurs GET
-http://localhost:3000/api/user/ficheUser
+http://localhost:3000/api/user/fiche_user
 
-## Voir une fiche utilisateur par son id GET
-http://localhost:3000/api/user/ficheUser/id:
+## Voir une fiche utilisateur GET
+http://localhost:3000/api/user/fiche_user/id:
 
 ## Modifier une fiche utilisateur PUT
-http://localhost:3000/api/user/ficheUser/id:
+http://localhost:3000/api/user/fiche_user/id:
+
+## Supprimer une fiche utilisateur DELETE
+http://localhost:3000/api/user/fiche_user/id:
 
