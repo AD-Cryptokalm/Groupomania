@@ -19,5 +19,5 @@ http://localhost:3000/api/user/ficheUser
 http://localhost:3000/api/user/ficheUser/id:
 
 ## Modifier une fiche utilisateur PUT
-http://localhost:3000/api/user/ficheUser/id
+http://localhost:3000/api/user/ficheUser/id:
 

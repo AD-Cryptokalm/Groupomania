@@ -3,11 +3,15 @@ const FicheUser = require("../models/FicheUser");
 
 exports.createFicheUser = (req, res, next) => {
   const ficheUserObject = req.body;
+  delete ficheUserObject._id;
+  delete ficheUserObject.userId;
   const ficheUser = new FicheUser({
     ...ficheUserObject,
-  });
-
-  console.log(ficheUser);
+    userId: req.auth.userId,
+    photoProfilUrl: `${req.protocol}://${req.get("host")}/images/${
+      req.file.filename
+    }`,
+  })
   ficheUser
     .save()
     .then(() => res.status(201).json({ message: "Profil créée" }))
@@ -42,25 +46,25 @@ exports.modifyFicheUser = (req, res, next) => {
     });
 };
 
-// exports.deleteUser = (req, res, next) => {
-//   User.findOne({ _id: req.params.id })
-//     .then((user) => {
-//       if (user.userId != req.userId) {
-//         res.status(401).json({ message: "Non autorisé !" });
-//       } else {
-//         User.deleteOne({ _id: req.params.id })
-//           .then(() => {
-//             res.status(200).json({ message: "Profil supprimé !" });
-//           })
-//           .catch((error) => res.status(401).json({ error }));
-//       }
-//     })
-//     .catch((error) => res.status(400).json({ error }));
-// };
-
-exports.logout = (req, res, next) => {
-  res.status(200).json({
-    userId: req.auth.userId,
-    token: "",
-  });
+exports.deleteFicheUser = (req, res, next) => {
+  FicheUser.findOne({ _id: req.params.id })
+    .then((ficheUser) => {
+      if (ficheUser.userId != req.body.userId) {
+        res.status(401).json({ message: "Non autorisé !" });
+      } else {
+        FicheUser.deleteOne({ _id: req.params.id })
+          .then(() => {
+            res.status(200).json({ message: "Profil supprimé !" });
+          })
+          .catch((error) => res.status(401).json({ error }));
+      }
+    })
+    .catch((error) => res.status(400).json({ error }));
 };
+
+// exports.logout = (req, res, next) => {
+//   res.status(200).json({
+//     userId: req.auth.userId,
+//     token: "",
+//   });
+// };

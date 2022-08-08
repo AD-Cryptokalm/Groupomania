@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
-// const multer = require("../middleware/multer-config");
+const multer = require("../middleware/multer-config");
 
 
 // importer le controller de user
@@ -16,15 +16,12 @@ router.post("/login", authCtrl.login);
 
 
 //FicheUser
-router.post("/ficheUser", ficheUserCtrl.createFicheUser);
+router.post("/ficheUser", auth, multer, ficheUserCtrl.createFicheUser);
 router.get("/ficheUser", ficheUserCtrl.getAllFicheUser);
-router.get("/ficheUser/:id", ficheUserCtrl.getOneFicheUser);
-router.put("/ficheUser/:id", ficheUserCtrl.modifyFicheUser)
+router.get("/ficheUser/:id", auth, ficheUserCtrl.getOneFicheUser);
+router.put("/ficheUser/:id", auth, multer, ficheUserCtrl.modifyFicheUser);
+router.delete("/ficheUser/:id", auth, multer, ficheUserCtrl.deleteFicheUser);
 
 
-
-// router.get("/:id", userCtrl.getOneUser);
-// router.put("/:id", auth, multer, userCtrl.updateUser);
-// router.delete("/:id", auth, multer, userCtrl.deleteUser);
 
 module.exports = router;
