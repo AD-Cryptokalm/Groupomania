@@ -17,7 +17,7 @@ router.post("/login", authCtrl.login);
 
 //FicheUser
 router.post("/ficheUser", auth, multer, ficheUserCtrl.createFicheUser);
-router.get("/ficheUser", ficheUserCtrl.getAllFicheUser);
+router.get("/ficheUser", auth, ficheUserCtrl.getAllFicheUser);
 router.get("/ficheUser/:id", auth, ficheUserCtrl.getOneFicheUser);
 router.put("/ficheUser/:id", auth, multer, ficheUserCtrl.modifyFicheUser);
 router.delete("/ficheUser/:id", auth, multer, ficheUserCtrl.deleteFicheUser);

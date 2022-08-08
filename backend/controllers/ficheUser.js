@@ -31,20 +31,42 @@ exports.getOneFicheUser = (req, res, next) => {
 };
 
 exports.modifyFicheUser = (req, res, next) => {
-  FicheUser.findOne({ _id: req.params.id })
-    .then((ficheUser) => {
-      if (ficheUser.userId != req.body.userId) {
-        res.status(400).json({ message: "Non autorisé !" });
-      } else {
-        FicheUser.updateOne({ _id: req.params.id }, {...req.body})
-          .then(() => res.status(201).json({ message: "Profil modifié!" }))
-          .catch((error) => res.status(400).json({ error }));
-      }
-    })
-    .catch((error) => {
-      res.status(500).json({ error });
-    });
+  const ficheUserObject = req.image ? {
+      ...JSON.parse(req.body),
+      photoProfilUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+  } : { ...req.body };
+
+  delete ficheUserObject.userId;
+  FicheUser.findOne({_id: req.params.id})
+      .then((ficheUser) => {
+          if (ficheUser.userId != req.auth.userId) {
+              res.status(401).json({ message : 'Non authorisé'});
+          } else {
+              FicheUser.updateOne({ _id: req.params.id}, { ...ficheUserObject, _id: req.params.id})
+              .then(() => res.status(200).json({message : 'Profil modifié!'}))
+              .catch(error => res.status(401).json({ error }));
+          }
+      })
+      .catch((error) => {
+          res.status(400).json({ error });
+      });
 };
+
+// exports.modifyFicheUser = (req, res, next) => {
+//   FicheUser.findOne({ _id: req.params.id })
+//     .then((ficheUser) => {
+//       if (ficheUser.userId != req.body.userId) {
+//         res.status(400).json({ message: "Non autorisé !" });
+//       } else {
+//         FicheUser.updateOne({ _id: req.params.id }, {...req.body})
+//           .then(() => res.status(201).json({ message: "Profil modifié!" }))
+//           .catch((error) => res.status(400).json({ error }));
+//       }
+//     })
+//     .catch((error) => {
+//       res.status(500).json({ error });
+//     });
+// };
 
 exports.deleteFicheUser = (req, res, next) => {
   FicheUser.findOne({ _id: req.params.id })
