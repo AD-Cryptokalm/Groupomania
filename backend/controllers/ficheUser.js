@@ -10,32 +10,37 @@ exports.createFicheUser = (req, res, next) => {
   console.log(ficheUser);
   ficheUser
     .save()
-    .then(() => res.status(201).json({ message: "Fiche utilisateur créée" }))
+    .then(() => res.status(201).json({ message: "Profil créée" }))
     .catch((error) => res.status(400).json({ error }));
 };
 
 exports.getAllFicheUser = (req, res, next) => {
-    FicheUser.find()
+  FicheUser.find()
     .then((post) => res.status(200).json(post))
     .catch((error) => res.status(400).json({ error }));
 };
 
+exports.getOneFicheUser = (req, res, next) => {
+  FicheUser.findOne({ _id: req.params.id })
+    .then((ficheUser) => res.status(200).json(ficheUser))
+    .catch((error) => res.status(404).json({ error }));
+};
 
-// exports.updateUser = (req, res, next) => {
-//   User.findOne({ _id: req.params.id })
-//     .then((user) => {
-//       if (user.userId != req.userId) {
-//         res.status(400).json({ message: "Non autorisé !" });
-//       } else {
-//         User.updateOne({ _id: req.params.id }, { pseudo: req.body.pseudo })
-//           .then(() => res.status(201).json({ message: "Pseudo modifié!" }))
-//           .catch((error) => res.status(400).json({ error }));
-//       }
-//     })
-//     .catch((error) => {
-//       res.status(500).json({ error });
-//     });
-// };
+exports.modifyFicheUser = (req, res, next) => {
+  FicheUser.findOne({ _id: req.params.id })
+    .then((ficheUser) => {
+      if (ficheUser.userId != req.body.userId) {
+        res.status(400).json({ message: "Non autorisé !" });
+      } else {
+        FicheUser.updateOne({ _id: req.params.id }, {...req.body})
+          .then(() => res.status(201).json({ message: "Profil modifié!" }))
+          .catch((error) => res.status(400).json({ error }));
+      }
+    })
+    .catch((error) => {
+      res.status(500).json({ error });
+    });
+};
 
 // exports.deleteUser = (req, res, next) => {
 //   User.findOne({ _id: req.params.id })

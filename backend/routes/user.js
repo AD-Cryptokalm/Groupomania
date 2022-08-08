@@ -18,6 +18,8 @@ router.post("/login", authCtrl.login);
 //FicheUser
 router.post("/ficheUser", ficheUserCtrl.createFicheUser);
 router.get("/ficheUser", ficheUserCtrl.getAllFicheUser);
+router.get("/ficheUser/:id", ficheUserCtrl.getOneFicheUser);
+router.put("/ficheUser/:id", ficheUserCtrl.modifyFicheUser)
 
 
 
