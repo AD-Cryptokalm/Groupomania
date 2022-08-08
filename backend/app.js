@@ -18,6 +18,7 @@ require('dotenv').config();
 const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
 
+
 const path = require("path");
 
 // connection au server mongoose
@@ -56,6 +57,8 @@ app.use(bodyParser.json());
 app.use("/api/post", postsRoutes);
 // pour cette route utiliser la route userRoutes
 app.use("/api/user", userRoutes);
+
+
 
 app.use("/images", express.static(path.join(__dirname, "images")));
 

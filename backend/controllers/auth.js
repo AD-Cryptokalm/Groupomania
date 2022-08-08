@@ -4,8 +4,7 @@ const bcrypt = require("bcrypt");
 // importer la fonction cryptage de mail
 const cryptojs = require("crypto-js");
 
-
-require('dotenv').config();
+require("dotenv").config();
 
 // importer la fonction jsonwebtoken
 const jwt = require("JsonWebToken");
@@ -13,12 +12,11 @@ const jwt = require("JsonWebToken");
 // importer le model user
 const User = require("../models/User");
 
-
-
 // création compte
 exports.signup = (req, res, next) => {
-
-const emailCryptoJs = cryptojs.HmacSHA256(req.body.email, `${process.env.CRYPTOJS_EMAIL}`).toString();
+  const emailCryptoJs = cryptojs
+    .HmacSHA256(req.body.email, `${process.env.CRYPTOJS_EMAIL}`)
+    .toString();
 
   bcrypt
     .hash(req.body.password, 10)
@@ -38,7 +36,11 @@ const emailCryptoJs = cryptojs.HmacSHA256(req.body.email, `${process.env.CRYPTOJ
 
 // connection
 exports.login = (req, res, next) => {
-  User.findOne({ email: req.body.email })
+  const emailCryptoJs = cryptojs
+    .HmacSHA256(req.body.email, `${process.env.CRYPTOJS_EMAIL}`)
+    .toString();
+
+  User.findOne({ email: emailCryptoJs })
     .then((user) => {
       if (!user) {
         return res
@@ -55,13 +57,9 @@ exports.login = (req, res, next) => {
             } else {
               res.status(200).json({
                 userId: user._id,
-                token: jwt.sign(
-                  { userId: user._id },
-                  'RANDOM_TOKEN_SECRET',
-                  {
-                    expiresIn: "24h",
-                  }
-                ),
+                token: jwt.sign({ userId: user._id }, "RANDOM_TOKEN_SECRET", {
+                  expiresIn: "24h",
+                }),
               });
             }
           })
