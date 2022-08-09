@@ -1,8 +1,8 @@
 const Post = require("../models/Post");
 
-// Ajout likes ou dislikes 
+// Ajout likes 
 exports.createLikePost = (req, res, next) => {
-  // identifier la post
+  // identifier le post
   Post.findOne({ _id: req.params.id })
     .then((post) => {
       // Ajouter un like
@@ -12,7 +12,7 @@ exports.createLikePost = (req, res, next) => {
         post.save();
       }
 
-      // changement de choix de like/dislike
+      // changement de choix de like
       if (req.body.like == 0 && post.usersLiked.indexOf(req.body.userId) != -1 ) {
         if (post.likes >= 1) {
           post.likes--;

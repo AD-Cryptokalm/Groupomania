@@ -82,8 +82,6 @@ exports.deleteFicheUser = (req, res, next) => {
     });
 };
 
-
-
 // exports.logout = (req, res, next) => {
 //   res.status(200).json({
 //     userId: req.auth.userId,
