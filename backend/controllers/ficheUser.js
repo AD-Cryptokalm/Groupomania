@@ -20,16 +20,22 @@ exports.createFicheUser = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
-exports.getAllFicheUser = (req, res, next) => {
-  FicheUser.find()
-    .then((post) => res.status(200).json(post))
-    .catch((error) => res.status(400).json({ error }));
+exports.getAllFicheUser = async (req, res, next) => {
+  try {
+    const ficheUser = await ficheUser.find({}).select("-.__v");
+    res.status(200).json(ficheUser);
+  } catch (error) {
+    res.status(400).json({ error });
+  }
 };
 
-exports.getOneFicheUser = (req, res, next) => {
-  FicheUser.findOne({ _id: req.params.id })
-    .then((ficheUser) => res.status(200).json(ficheUser))
-    .catch((error) => res.status(404).json({ error }));
+exports.getOneFicheUser = async (req, res, next) => {
+  try {
+    const ficheUser = await ficheUser.findById({ _id: req.params.id }).exec();
+    res.status(200).json(ficheUser);
+  } catch (error) {
+    res.status(400).json({ error });
+  }
 };
 
 exports.modifyFicheUser = (req, res, next) => {

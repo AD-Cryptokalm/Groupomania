@@ -4,17 +4,24 @@ const Post = require("../models/Post");
 // importer fs pour gérer les images
 const fs = require("fs");
 
-exports.getOnePost = (req, res, next) => {
-  Post.find()
-    .then((post) => res.status(200).json(post))
-    .catch((error) => res.status(400).json({ error }));
+//Voir un post par son id
+exports.getOnePost = async (req, res, next) => {
+  try {
+    const post = await post.findById({ _id: req.params.id }).exec();
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(400).json({ error });
+  }
 };
 
 // Voir tous les posts
-exports.getAllPost = (req, res, next) => {
-  Post.find()
-    .then((post) => res.status(200).json(post))
-    .catch((error) => res.status(400).json({ error }));
+exports.getAllPost = async (req, res, next) => {
+  try {
+    const post = await post.find({}).select("-.__v");
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(400).json({ error });
+  }
 };
 
 // Ajouter un post

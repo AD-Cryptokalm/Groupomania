@@ -6,8 +6,6 @@ const morgan = require("morgan");
 // importer mongoose
 const mongoose = require("mongoose");
 
-
-
 // importer helmet
 const helmet = require("helmet");
 
@@ -17,7 +15,6 @@ require('dotenv').config();
 // importer les routers
 const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
-
 
 const path = require("path");
 
@@ -33,7 +30,7 @@ mongoose
 // créer une application express
 const app = express();
 
-const bodyParser = require("body-parser");
+
 
 app.use(morgan("dev"));
 
@@ -51,8 +48,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(bodyParser.json());
 
+app.use(express.json());
 // pour cette route utiliser la route saucesRoutes
 app.use("/api/post", postsRoutes);
 // pour cette route utiliser la route userRoutes

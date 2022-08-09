@@ -3,13 +3,14 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
 const multer = require("../middleware/multer-config");
+const controleEmail = require("../middleware/controleEmail");
 
 // importer le controller de user
 const authCtrl = require("../controllers/auth");
 const ficheUserCtrl = require("../controllers/ficheUser");
 
 //Auth
-router.post("/signup", authCtrl.signup);
+router.post("/signup", controleEmail, authCtrl.signup);
 router.post("/login", authCtrl.login);
 // router.get("/logout", userCtrl.logout);
 
