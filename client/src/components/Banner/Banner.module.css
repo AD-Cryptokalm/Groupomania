@@ -1,6 +1,7 @@
 .banner {
     border: solid 2px #FD2D01;
-    height: 20rem;
+    border-radius: 0 0 15px 15px;
+    height: 15rem;
     background-color: #FFD7D7;
     display: flex;
     justify-content: space-around;

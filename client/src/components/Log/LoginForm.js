@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Profil = () => {
+const LoginForm = () => {
     return (
         <div>
-            Profil
+           Se connecter 
         </div>
     );
 };
 
-export default Profil;
+export default LoginForm;

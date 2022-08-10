@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import ErrorModal from "../UI/ErrorModal";
+// import ErrorModal from "../UI/ErrorModal";
 import Button from "../UI/Button";
-import classes from "./Signup.module.css";
+import classes from "../../styles/Signup.module.css";
 
 
 const Auth = () => {
