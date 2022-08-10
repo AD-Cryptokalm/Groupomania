@@ -1,0 +1,20 @@
+.banner {
+    border: solid 2px #FD2D01;
+    height: 20rem;
+    background-color: #FFD7D7;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+.buttonNav Button{
+    margin-right: 1rem;
+    background-color: #4E5166;
+    color: #FFFF;
+}
+
+.buttonNav Button:hover  {
+    background-color: #FD2D01;
+}
