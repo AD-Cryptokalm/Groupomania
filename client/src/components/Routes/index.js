@@ -9,8 +9,8 @@ const index = () => {
         <div>
             <Router>
                 <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/Connexion" exact component={Connexion} />
+                    <Route path="/" exact component={Connexion} />
+                    <Route path="/accueil" exact component={Home} />
                     <Route path="/trending" exact component={Trending} />
                     <Redirect to="/"/>
                 </Switch>

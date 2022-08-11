@@ -1,0 +1,24 @@
+#signUp-form input {
+    margin: 1rem auto;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border-radius: 15px;
+    border: solid 1px white;
+    cursor: pointer; 
+    color: white;
+    background-color: #4E5166;
+}  
+
+#signUp-form input:hover {
+    background-color: #FFD7D7;
+    color: #4E5166;
+}
+
+#signUp-form label {
+    /* display: block; */
+    margin-bottom: 0.3rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
