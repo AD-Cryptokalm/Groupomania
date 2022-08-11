@@ -36,7 +36,8 @@ app.use(morgan("dev"));
 
 // autorisé l'utilisateur a se servir de notre Api
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3001");
+  res.header('Access-Control-Allow-Credentials', true);
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
