@@ -28,7 +28,7 @@ export default function LoginForm() {
               passwordError.innerHTML = res.data.errors.password;
             } else {
             console.log(data)
-            setData(res.data)
+            setData(res.data.token)
           window.location = "/accueil";
         }
       })

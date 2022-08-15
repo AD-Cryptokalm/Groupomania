@@ -1,75 +1,53 @@
 // const jwt = require("jsonwebtoken")
-const FicheUser = require("../models/User");
+const UserModel = require("../models/User");
+const ObjectId = require("mongoose").Types.ObjectId;
 
-const fs = require("fs");
 
+module.exports.getAllUser = async (req, res) => {
+  const users = await UserModel.find().select("-password");
+  res.status(200).json(users);
+};
 
-exports.getAllUser = async (req, res, next) => {
+module.exports.getOneUser = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id))
+    return res.status(400).send("Utilisateur inconnu");
+
+  UserModel.findById(req.params.id, (err, data) => {
+    if (!err) res.send(data);
+    else console.log("Utilisateur inconnu");
+  }).select("-password");
+};
+
+module.exports.modifyUser = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id))
+    return res.status(400).send("Utilisateur inconnu");
+
   try {
-    const ficheUser = await ficheUser.find({}).select("-password");
-    res.status(200).json(ficheUser);
-  } catch (error) {
-    res.status(400).json({ error });
+    await UserModel.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          pseudo: req.body.pseudo,
+        },
+      },
+      { new: true, upsert: true, setDefaultsOnInsert: true }
+    )
+
+      .then((data) => res.send(data))
+      .catch((err) => res.status(500).send({ message: err }));
+  } catch (err) {
+    return res.status(500).send({ message: err });
   }
 };
 
-exports.getOneUser = async (req, res, next) => {
-  try {
-    const ficheUser = await ficheUser.findById({ _id: req.params.id }).exec();
-    res.status(200).json(ficheUser);
-  } catch (error) {
-    res.status(400).json({ error });
-  }
-};
 
-exports.modifyUser = (req, res, next) => {
-  const ficheUserObject = req.image
-    ? {
-        ...JSON.parse(req.body),
-        photoProfilUrl: `${req.protocol}://${req.get("host")}/images/${
-          req.file.filename
-        }`,
-      }
-    : { ...req.body };
+module.exports.deleteUser = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id))
+    return res.status(400).send("Utilisateur inconnu");
 
-  delete ficheUserObject.userId;
-  FicheUser.findOne({ _id: req.params.id })
-    .then((ficheUser) => {
-      if (ficheUser.userId != req.auth.userId) {
-        res.status(401).json({ message: "Non authorisé" });
-      } else {
-        FicheUser.updateOne(
-          { _id: req.params.id },
-          { ...ficheUserObject, _id: req.params.id }
-        )
-          .then(() => res.status(200).json({ message: "Profil modifié!" }))
-          .catch((error) => res.status(401).json({ error }));
-      }
-    })
-    .catch((error) => {
-      res.status(400).json({ error });
-    });
-};
-
-exports.deleteUser = (req, res, next) => {
-  FicheUser.findOne({ _id: req.params.id })
-    .then((ficheUser) => {
-      if (ficheUser.userId != req.auth.userId) {
-        res.status(401).json({ message: "Non authorisé" });
-      } else {
-        const filename = ficheUser.photoProfilUrl.split("/images/")[1];
-        fs.unlink(`images/${filename}`, () => {
-          FicheUser.deleteOne({ _id: req.params.id })
-            .then(() => {
-              res.status(200).json({ message: "Objet supprimé !" });
-            })
-            .catch((error) => res.status(401).json({ error }));
-        });
-      }
-    })
-    .catch((error) => {
-      res.status(500).json({ error });
-    });
-};
-
-
+    try {
+      await UserModel.remove({_id: req.params.id}).exec();
+    res.status(200).json({message: "Utilisateur supprimé"})
+} catch(err) {
+  return res.status(500).json({ message: err });
+}};

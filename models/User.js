@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-
-// ne permettre qu'une utilisation unique par adresse mail
-const uniqueValidator = require("mongoose-unique-validator");
+const { isEmail } = require("validator");
+const bcrypt = require("bcrypt");
 
 // schéma user
 const userSchema = mongoose.Schema({
@@ -12,14 +11,30 @@ const userSchema = mongoose.Schema({
     maxlength: 25,
     unique: true,
   },
-  email: { type: String, required: true, unique: true },
+  email: { type: String, required: true, validate: [isEmail], unique: true },
   password: { type: String, required: true, minlenght: 6 },
   photoProfilUrl: {
     type: String,
-    default: "http://localhost:3000/client/images/profil/photo.jpg",
+    default: "./uploads/profil/photo.jpg",
   },
 });
 
-userSchema.plugin(uniqueValidator);
+userSchema.pre("save", async function (next) {
+  const salt = await bcrypt.genSalt();
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
+});
+
+userSchema.statics.login = async function (email, password) {
+  const user = await this.findOne({ email });
+  if (user) {
+    const auth = await bcrypt.compare(password, user.password);
+    if (auth) {
+      return user;
+    }
+    throw Error("incorrect password");
+  }
+  throw Error("incorrect email");
+};
 
 module.exports = mongoose.model("User", userSchema);

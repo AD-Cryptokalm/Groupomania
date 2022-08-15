@@ -1,24 +1,27 @@
 // création des routes
 const express = require("express");
 const router = express.Router();
-const auth = require("../middleware/auth");
-const multer = require("../middleware/multer-config");
-const controleEmail = require("../middleware/controleEmail");
+const multer = require('multer');
+const upload = multer()
+// const multer = require("../middleware/multer-config");
 
 // importer le controller de user
 const authCtrl = require("../controllers/auth");
 const userCtrl = require("../controllers/user");
+const uploadCtrl = require("../controllers/upload");
 
 //Auth user
-router.post("/signup", controleEmail,authCtrl.signup);
+router.post("/signup",authCtrl.signUp);
 router.post("/login",authCtrl.login);
 router.get("/logout", authCtrl.logout);
 
 //User profil
-router.get("/", auth, userCtrl.getAllUser);
-router.get("/:id", auth, userCtrl.getOneUser);
-router.put("/:id", auth, multer, userCtrl.modifyUser);
-router.delete("/:id", auth, multer, userCtrl.deleteUser);
+router.get("/", userCtrl.getAllUser);
+router.get("/:id", userCtrl.getOneUser);
+router.put("/:id",  userCtrl.modifyUser);
+router.delete("/:id", userCtrl.deleteUser);
+
+router.post('/upload', upload.single('file'), uploadCtrl.uploadProfil)
 
 
 
