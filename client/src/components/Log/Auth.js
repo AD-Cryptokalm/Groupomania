@@ -4,8 +4,8 @@ import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 
 export default function Auth() {
-  const [signUpModal, setSignUpModal] = useState(true);
-  const [loginModal, setLoginModal] = useState(false);
+  const [signUpModal, setSignUpModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(true);
 
   const handleModals = (e) => {
     if (e.target.id === "signUp") {

@@ -14,8 +14,6 @@ const userSchema = mongoose.Schema({
   },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true, minlenght: 6 },
-  nom: { type: String, required: true },
-  prenom: { type: String, required: true },
   photoProfilUrl: {
     type: String,
     default: "http://localhost:3000/client/images/profil/photo.jpg",

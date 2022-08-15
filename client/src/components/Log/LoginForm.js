@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
-import "../../styles/loginForm.css";
+import "../../styles/loginSignUpForm.css";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [data, setData] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -21,21 +23,24 @@ export default function LoginForm() {
       },
     })
       .then((res) => {
-        console.log(res)
-        if (res.data.errors) {
-          emailError.innerHTML = res.data.errors.email;
-          passwordError.innerHTML = res.data.errors.password;
-        } else {
+          if (res.data.errors) {
+              emailError.innerHTML = res.response.data;
+              passwordError.innerHTML = res.data.errors.password;
+            } else {
+            console.log(data)
+            setData(res.data)
           window.location = "/accueil";
         }
       })
       .catch((err) => {
+        setEmail('')
+        setPassword('')
         console.log(err);
       });
   };
 
   return (
-    <form action="" onSubmit={handleLogin} id="login-form">
+    <form action="" onSubmit={handleLogin} id="form">
       <label htmlFor="email">Email</label>
       <br />
       <input

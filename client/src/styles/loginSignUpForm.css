@@ -1,6 +1,7 @@
-#login-form input {
-    margin: 1rem auto;
+#form input {
+    margin: 1rem 1rem;
     font-size: 1.5rem;
+    /* width: 22rem; */
     padding: 0.5rem 1rem;
     font-weight: bold;
     border-radius: 15px;
@@ -11,18 +12,26 @@
     box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, 0.523);
 }  
 
-#login-form input:hover {
+#form input:hover {
     background-color: #FFD7D7;
     color: #4E5166;
 }
 
-#login-form label {
+#form label {
     /* display: block; */
     margin-bottom: 0.3rem;
     font-size: 1.5rem;
     font-weight: bold;
     color: white;
 }
+
+.succesSignUp {
+    padding-top: 1rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+
 
 .error {
     color: rgb(232, 110, 110);

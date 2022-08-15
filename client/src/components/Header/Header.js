@@ -7,6 +7,7 @@ export default function Header() {
           src="./icon-left-font-monochrome-black.png"
           alt="Logo Groupomania"
         /> 
+        <i className="fa-solid fa-right-from-bracket"></i>
       </header>
     )
   }
