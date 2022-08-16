@@ -33,7 +33,7 @@ module.exports.loginErrors = (err) => {
 module.exports.uploadErrors = (err) => {
   let errors = { format: "", maxSize: "" };
 
-  if (errors.message.includes("Format fichier invalide"))
+  if (errors.message.includes("invalid file"))
     errors.format = "Format incompatible";
 
   if (errors.message.includes("max size"))

@@ -1,6 +1,8 @@
 // création des routes 
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const upload = multer()
 
 
 // importer le controller de Post
@@ -10,7 +12,7 @@ const likesCtrl = require('../controllers/likes');
 
 
 router.get('/',postsCtrl.getAllPost);
-router.post("/", postsCtrl.createPost);
+router.post("/", upload.single('file'),postsCtrl.createPost);
 router.put('/:id', postsCtrl.modifyPost);
 router.delete('/:id', postsCtrl.deletePost); 
 
