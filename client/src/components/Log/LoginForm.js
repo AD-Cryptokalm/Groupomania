@@ -6,12 +6,13 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [data, setData] = useState("");
-
   const handleLogin = (e) => {
     e.preventDefault();
     const emailError = document.querySelector(".email.error");
     const passwordError = document.querySelector(".password.error");
+
+    emailError.innerHTML = "";
+    passwordError.innerHTML = "";
 
     axios({
       method: "post",
@@ -22,19 +23,16 @@ export default function LoginForm() {
         password,
       },
     })
-      .then((res) => {
-          if (res.data.errors) {
-              emailError.innerHTML = res.response.data;
-              passwordError.innerHTML = res.data.errors.password;
-            } else {
-            console.log(data)
-            setData(res.data.token)
-          window.location = "/accueil";
-        }
+      .then(() => {
+          
+          window.location = "/home";
+        
       })
       .catch((err) => {
         setEmail('')
         setPassword('')
+        emailError.innerHTML = err.response.data.errors.email;
+        passwordError.innerHTML = err.response.data.errors.password;
         console.log(err);
       });
   };

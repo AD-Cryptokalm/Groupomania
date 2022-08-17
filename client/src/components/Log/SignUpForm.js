@@ -26,43 +26,39 @@ export default function SignUpForm() {
     passwordError.innerHTML = "";
     confirmPasswordError.innerHTML = "";
     termsdError.innerHTML = "";
-    
+
     if (password !== confirmPassword || !terms.checked) {
-        if (password !== confirmPassword)
+      if (password !== confirmPassword)
         confirmPasswordError.innerHTML =
-        "Les mots de passe ne sont pas identiques";
-        
-        if (!terms.checked)
+          "Les mots de passe ne sont pas identiques";
+
+      if (!terms.checked)
         termsdError.innerHTML = "Veuillez valider les conditions générales";
     } else {
-        await axios({
-            method: "post",
-            url: `${process.env.REACT_APP_API_URL}api/user/signup`,
-            withCredentials: true,
-            data: {
-                pseudo,
-                email,
-                password,
-            },
-        })
-        .then((res) => {
-            
-            if (res.response.data.errors) {
-                pseudoError.innerHTML = res.data.errors.pseudo;
-                emailError.innerHTML = res.data.errors.email;
-                passwordError.innerHTML = res.data.errors.password;
-            } else {
-                setFormSubmit(true);
-            }
-        })
+      await axios({
+        method: "post",
+        url: `${process.env.REACT_APP_API_URL}api/user/signup`,
+        withCredentials: true,
+        data: {
+          pseudo,
+          email,
+          password,
+        },
+      })
+        .then(() => {
+          
+            setFormSubmit(true);
+          })
+        
         .catch((err) => {
-            setPseudo("");
-            setEmail("");
-            setPassword("");
-            setConfirmPassword("");
-            terms.checked = "";
-
-          console.log(err.response.data.errors);
+          setPseudo("");
+          setEmail("");
+          setPassword("");
+          setConfirmPassword("");
+          terms.checked = "";
+          pseudoError.innerHTML = err.response.data.errors.pseudo;
+          emailError.innerHTML = err.response.data.errors.email;
+          passwordError.innerHTML = err.response.data.errors.password;
         });
     }
   };
@@ -71,7 +67,7 @@ export default function SignUpForm() {
     <>
       {formSubmit ? (
         <>
-          <LoginForm/>
+          <LoginForm />
           <h4 className="succesSignUp">
             Enregistrement réussi, veuillez-vous connecter
           </h4>

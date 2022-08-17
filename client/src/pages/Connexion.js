@@ -1,17 +1,18 @@
 import Log from "../components/Log/Auth";
-import Header from "../components/Header/Header";
 import { useContext } from "react";
 import { UidContext } from "../components/AppContext";
+import Home from "./Home";
+
+
 export default function Connexion() {
   const uid = useContext(UidContext);
 
   return (
     <div className="connexionPage">
       {uid ? (
-        <h1>Update page</h1>
+        <Home/>
       ) : (
         <div>
-          <Header />
           <Log />
         </div>
       )}

@@ -1,7 +1,7 @@
 .connection-form {
     border: solid 2px #FD2D01;
     border-radius: 15px;
-    box-shadow: 3px 5px 15px 5px rgba(0,0,0,0.84);
+    box-shadow: 3px 5px 15px 1px rgba(0,0,0,0.84);
     text-align: center;
     margin: 5rem auto;
     padding: 2rem;
