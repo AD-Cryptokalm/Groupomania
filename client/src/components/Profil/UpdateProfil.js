@@ -12,7 +12,7 @@ export default function UpdateProfil() {
         <div className="imageProfilUrl">
           <img
             className="img-profil"
-            src={userData.photoProfilUrl}
+            src={userData.picture}
             alt="user-pic"
           />
         </div>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getUser } from './actions/user.anction';
+import { getUser } from './actions/user.action';
 import { UidContext } from './components/AppContext';
 import Routes from './components/Routes/index';
 

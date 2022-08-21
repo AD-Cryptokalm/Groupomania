@@ -1,6 +1,7 @@
-import e from "express";
+
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { uploadPicture } from "../../actions/user.action";
 
 export default function UploadImg() {
   const [file, setFile] = useState();
