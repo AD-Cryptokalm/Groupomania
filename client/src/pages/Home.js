@@ -1,8 +1,17 @@
+import NavBarIcon from '../components/NavBarIcon'
+
+
 export default function Home() {
     return (
         <>
         <div>
-            <p>Home</p>
+            <NavBarIcon/>
+            <div className='newPost'>
+
+            </div>
+            <div className='posts'>
+                
+            </div>
         </div>
         </>
     );

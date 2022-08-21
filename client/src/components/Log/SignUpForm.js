@@ -119,9 +119,9 @@ export default function SignUpForm() {
           <div className="confirmPassword error"></div>
           <br />
           <input type="checkbox" id="terms" className="checkboxTerms" />
-          <label htmlFor="terms">
-            J'accepte les
-            <a href="/terms" target="_blank" rel="noopener noreferrer">
+          <label htmlFor="terms" >
+            J'accepte les 
+            <a href="/terms" target="_blank" rel="noopener noreferrer" className="labelCondition">
               conditions générales
             </a>
           </label>

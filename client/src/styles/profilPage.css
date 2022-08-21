@@ -1,0 +1,9 @@
+.update-profil {
+    display: flex;
+    justify-items: center;
+    text-align: center;
+}
+
+.profil-container {
+    flex: 2;
+}

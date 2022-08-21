@@ -25,6 +25,10 @@
     color: white;
 }
 
+.labelCondition {
+    padding-left: 0.6rem;
+}
+
 .succesSignUp {
     padding-top: 1rem;
     font-size: 1.5rem;
