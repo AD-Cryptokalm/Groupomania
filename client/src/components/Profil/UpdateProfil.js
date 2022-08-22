@@ -1,22 +1,71 @@
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "../../styles/profilUpdate.css";
 import UploadImg from "./UploadImg";
+import { updateProfil } from "../../actions/user.action";
 
 export default function UpdateProfil() {
+  const [pseudo, setPseudo] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [updateForm, setUpdateForm] = useState(false);
   const userData = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
+
+const handleProfil = () => {
+  dispatch(updateProfil(userData._id, pseudo, password))
+}
+
 
   return (
     <div className="profil-container">
       <h1>Profil de {userData.pseudo}</h1>
-      <div className="form-update-profil">
-        <div className="imageProfilUrl">
-          <img
-            className="img-profil"
-            src={userData.picture}
-            alt="user-pic"
-          />
+      <div className="container-form-update">
+        <div className="form-update-profil" id="form">
+          <div className="imageProfilUrl">
+            <img className="img-profil" src={userData.picture} alt="user-pic" />
+          </div>
+          <UploadImg />
         </div>
-        <UploadImg />
+        <div className="form-update-profil" id="form">
+          <form action="" onSubmit={handleProfil} >
+            <label htmlFor="pseudo">Modifier pseudo</label>
+            <br />
+            <input
+              type="text"
+              name="pseudo"
+              id="pseudo"
+              onChange={(e) => setPseudo(e.target.value)}
+              value={pseudo}
+            />
+            <div className="pseudo error"></div>
+            <br />
+            <label htmlFor="password">Modifier mot de passe</label>
+            <br />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+            <div className="password error"></div>
+            <br />
+            <label htmlFor="confirmPassword">Confirmer mot de passe</label>
+            <br />
+            <input
+              type="password"
+              name="password"
+              id="confirmPassword"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={confirmPassword}
+            />
+            <div className="confirmPassword error"></div>
+
+            <br />
+            <input type="submit" value="Modifier" />
+          </form>
+        </div>
       </div>
     </div>
   );

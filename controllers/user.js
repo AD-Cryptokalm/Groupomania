@@ -28,6 +28,7 @@ module.exports.modifyUser = async (req, res) => {
       {
         $set: {
           pseudo: req.body.pseudo,
+          password: req.body.password,
         },
       },
       { new: true, upsert: true, setDefaultsOnInsert: true }

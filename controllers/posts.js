@@ -47,7 +47,7 @@ exports.createPost = async (req, res, next) => {
   const newPost = new postModel({
     userId: req.body.userId,
     message: req.body.message,
-    imageUrl: req.file !== null ? "./uploads/posts/" + fileName : "",
+    picture: req.file !== null ? "./uploads/posts/" + fileName : "",
   });
   try {
     const post = await newPost.save();

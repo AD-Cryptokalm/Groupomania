@@ -22,7 +22,7 @@ module.exports.signUpErrors = (err) => {
 module.exports.loginErrors = (err) => {
   let errors = { email: "", password: "" };
 
-  if (err.message.includes("email"))
+  if (err.message.content("email"))
     errors.email = "Paire email, password incorrect ";
 
   if (err.message.includes("password"))
@@ -32,7 +32,7 @@ module.exports.loginErrors = (err) => {
 };
 
 module.exports.uploadErrors = (err) => {
-  let errors = { format: "", maxSize: "" };
+  let errors = { format: '', maxSize: "" };
 
   if (errors.message.includes("invalid file"))
     errors.format = "Format incompatible";

@@ -11,12 +11,12 @@ export default function Profil() {
 
 
     return (
-        <>
+       
         <div className='update-profil'>
             <NavBarIcon/>
             <UpdateProfil/>
             
         </div>
-        </>
+       
     );
 };

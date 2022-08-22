@@ -56,7 +56,7 @@ app.use("/api/post", postsRoutes);
 // pour cette route utiliser la route userRoutes
 app.use("/api/user", userRoutes);
 
-app.use("/upload", express.static(path.join(__dirname, "images")));
+// app.use("/upload", express.static(path.join(__dirname, "images")));
 
 app.use(helmet());
 
