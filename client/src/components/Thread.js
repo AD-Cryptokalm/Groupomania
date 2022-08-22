@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { getPosts } from "../actions/post.action";
 import { useDispatch, useSelector } from "react-redux";
 import { isEmpty} from "./Utils"
+import Card from "./Post/Card";
+
+import '../styles/cardPost.css'
+
 
 export default function Thread() {
   const [loadPost, setLoadPost] = useState(true);
@@ -20,7 +24,7 @@ export default function Thread() {
         <ul>
             {!isEmpty(posts[0]) &&
             posts.map((post) => {
-                return <li>{post._id}</li>
+                return <Card post={post} key={post._id}/>
             })
             }
         </ul>

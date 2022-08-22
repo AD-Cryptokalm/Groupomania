@@ -1,0 +1,18 @@
+.card-container {
+    border: solid 2px #FD2D01;
+    border-radius: 15px;
+    box-shadow: 3px 5px 15px 1px rgba(0,0,0,0.84);
+    text-align: center;
+    
+    padding: 16px;
+    /* border-radius: 20px; */
+    margin: 30px auto;
+    /* position: relative; */
+    min-height: 10rem;
+    max-width: 85rem;
+}
+
+.fas  {
+    color: white;
+    font-size: x-large
+}
