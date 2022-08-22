@@ -13,7 +13,7 @@ module.exports.getOneUser = async (req, res) => {
     return res.status(400).send("Utilisateur inconnu");
 
   UserModel.findById(req.params.id, (err, data) => {
-    if (!err) res.send(data);
+    if (res) res.send(data);
     else console.log("Utilisateur inconnu");
   }).select("-password");
 };

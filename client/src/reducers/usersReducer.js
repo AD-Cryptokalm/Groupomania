@@ -1,8 +1,8 @@
-import { GET_USERS } from "../actions/users.actions";
+import { GET_USERS } from "../actions/users.action";
 
 const initialState = {};
 
-export default function (state = initialState, action) {
+export default function usersReducer(state = initialState, action) {
   switch (action.type) {
     case GET_USERS:
       return action.payload;

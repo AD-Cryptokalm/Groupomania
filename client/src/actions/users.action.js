@@ -8,6 +8,7 @@ export const getUsers = () => {
         .get(`${process.env.REACT_APP_API_URL}api/user`)
         .then((res) => {
             dispatch({ type: GET_USERS, payload: res.data})
+            console.log(res.data)
         })
         .catch((err) => console.log(err))
     }

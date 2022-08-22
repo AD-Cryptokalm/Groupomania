@@ -6,7 +6,7 @@ import "./index.css";
 import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from './reducers'
-import { getUsers } from "./actions/users.actions";
+import { getUsers } from "./actions/users.action";
 
 import { composeWithDevTools } from "redux-devtools-extension";
 

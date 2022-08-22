@@ -16,9 +16,9 @@ const MIME_TYPES = {
 // Voir tous les posts
 exports.getAllPost = (req, res, next) => {
   postModel.find((err, data) => {
-    if (!err) res.send(data);
+    if (res) res.send(data);
     else console.log(err);
-  });
+  }).sort({ createAt: -1});
 };
 
 // Ajouter un post
@@ -48,6 +48,7 @@ exports.createPost = async (req, res, next) => {
     userId: req.body.userId,
     message: req.body.message,
     picture: req.file !== null ? "./uploads/posts/" + fileName : "",
+    video: req.body.video,
   });
   try {
     const post = await newPost.save();
