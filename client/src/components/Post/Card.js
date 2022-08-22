@@ -45,7 +45,12 @@ const Card = ({ post }) => {
               <div className="date-post">{dateParser(post.createdAt)}</div>
             </div>
             <div className="card-post">
-              {post.message}
+              <div className="post-container">
+                <div className="post-text">
+                    {post.message}
+                </div>
+              </div>
+              <br />
               {post.picture && (
                 <img
                   src={post.picture}
@@ -66,7 +71,10 @@ const Card = ({ post }) => {
               )}
             </div>
             <div className="card-footer">
-                <div className="card-like"></div>
+              <div className="card-like">
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-regular fa-heart"></i>
+              </div>
             </div>
           </div>
         </>

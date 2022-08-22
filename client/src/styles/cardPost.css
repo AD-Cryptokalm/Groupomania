@@ -32,10 +32,13 @@
     object-fit: cover;
     border-radius: 17px;
     border: solid 1px white;
+    box-shadow: 3px 5px 15px 1px rgba(0,0,0,0.84);
+
 }
 
 .card-right {
     flex: 2;
+    padding-left: 2rem;
 }
 
 .card-header {
@@ -46,10 +49,47 @@
 .pseudo {
     color: white;
     font-size: medium;
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
 }
 
 .date-post {
     color: gray;
     font-size: 1.2rem;
+}
+
+.post-container {
+    border: solid 1px white;
+    border-radius: 15px;
+    box-shadow: 3px 5px 15px 1px rgba(0,0,0,0.84);
+    /* margin-left: 2rem; */
+    margin-top: 2rem;
+    min-height: 8rem;
+    background-color:  #ffd7d7da;
+}
+
+.post-text {
+    padding: 1rem;
+    font-size: 1.4rem;
+
+}
+
+.card-picture-post {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 17px;
+}
+
+/* .card-footer {
+    position:relative;
+} */
+.card-like {
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.card-like i {
+    color: white;
+    font-size: 2rem;
 }
