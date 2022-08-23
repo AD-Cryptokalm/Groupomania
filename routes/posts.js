@@ -16,7 +16,8 @@ router.post("/", upload.single('file'),postsCtrl.createPost);
 router.put('/:id', postsCtrl.modifyPost);
 router.delete('/:id', postsCtrl.deletePost); 
 
-router.post('/like/:id', likesCtrl.createLikePost);
+router.patch('/like/:id', likesCtrl.likePost);
+router.patch('/unlike/:id', likesCtrl.unlikePost);
 
 
 

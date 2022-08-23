@@ -17,6 +17,7 @@ const userSchema = mongoose.Schema({
     type: String,
     default: "./uploads/profil/photoProfil.png",
   },
+  
 });
 
 userSchema.pre("save", async function (next) {

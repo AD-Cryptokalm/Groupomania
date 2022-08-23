@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_USER = "GET_USER";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 export const UPDATE_PROFIL = "UPDATE_PROFIL";
+export const GET_USER_ERRORS= "GET_USER_ERRORS"
 
 export const getUser = (uid) => {
   return (dispatch) => {
@@ -30,18 +31,18 @@ export const uploadPicture = (data, id) => {
   };
 };
 
-export const updateProfil = (userId, pseudo, password) => {
+export const updateProfil = (userId, pseudo) => {
   return (dispatch) => {
     return axios({
       method: "put",
       url: `${process.env.REACT_APP_API_URL}api/user/` + userId,
       data: {
         pseudo,
-        password,
+        
       },
     })
     .then((res) => {
-        dispatch({type: UPDATE_PROFIL, payload: pseudo, password})
+        dispatch({type: UPDATE_PROFIL, payload: pseudo})
     })
     .catch((err) => console.log(err))
   };

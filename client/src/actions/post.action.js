@@ -12,3 +12,5 @@ export const getPosts = () => {
         .catch((err) => console.log(err))
     }
 }
+
+

@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { dateParser, isEmpty } from "../Utils";
 
+
 const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const usersData = useSelector((state) => state.usersReducer);
-  const userData = useSelector((state) => state.userReducer);
+//   const userData = useSelector((state) => state.userReducer);
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -24,6 +25,7 @@ const Card = ({ post }) => {
                 usersData
                   .map((user) => {
                     if (user._id === post.userId) return user.picture;
+                    else return null;
                   })
                   .join("")
               }
@@ -38,6 +40,7 @@ const Card = ({ post }) => {
                     usersData
                       .map((user) => {
                         if (user._id === post.userId) return user.pseudo;
+                        else return null;
                       })
                       .join("")}
                 </h3>
@@ -71,10 +74,7 @@ const Card = ({ post }) => {
               )}
             </div>
             <div className="card-footer">
-              <div className="card-like">
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-regular fa-heart"></i>
-              </div>
+                
             </div>
           </div>
         </>

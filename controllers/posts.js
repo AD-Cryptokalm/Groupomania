@@ -16,9 +16,9 @@ const MIME_TYPES = {
 // Voir tous les posts
 exports.getAllPost = (req, res, next) => {
   postModel.find((err, data) => {
-    if (res) res.send(data);
+    if (!err) res.send(data);
     else console.log(err);
-  }).sort({ createAt: -1});
+  }).sort({createdAt: -1})
 };
 
 // Ajouter un post
