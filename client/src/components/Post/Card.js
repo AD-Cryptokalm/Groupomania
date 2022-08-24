@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { dateParser, isEmpty } from "../Utils";
+import LikeButton from "./LikeButton";
 
 
 const Card = ({ post }) => {
@@ -74,7 +75,7 @@ const Card = ({ post }) => {
               )}
             </div>
             <div className="card-footer">
-                
+                <LikeButton post={post}/>
             </div>
           </div>
         </>
