@@ -1,13 +1,26 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts, updatePost } from "../../actions/post.action";
 import { dateParser, isEmpty } from "../Utils";
 import LikeButton from "./LikeButton";
 
-
 const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isUpdated, setIsUpdated] = useState(false);
+  const [textUpdated, setTextUpdated] = useState(null);
   const usersData = useSelector((state) => state.usersReducer);
-//   const userData = useSelector((state) => state.userReducer);
+  const userData = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
+
+  const updateItem = async () => {
+    if (textUpdated) {
+       await dispatch(updatePost(post._id, textUpdated))
+       .then(()=> dispatch(getPosts()))
+       .catch((err) => console.log(err));
+    }
+    setIsUpdated(false)
+  }
+  
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -51,7 +64,20 @@ const Card = ({ post }) => {
             <div className="card-post">
               <div className="post-container">
                 <div className="post-text">
-                    {post.message}
+                  {isUpdated === false && <p>{post.message}</p>}
+                  {isUpdated && (
+                    <div className="update-post">
+                      <textarea
+                        defaultValue={post.message}
+                        onChange={(e) => setTextUpdated(e.target.value)}
+                      />
+                      <div className="button-container">
+                        <button className="button" onClick={updateItem}>
+                          Valider
+                          </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
               <br />
@@ -73,9 +99,15 @@ const Card = ({ post }) => {
                   title={post._id}
                 ></iframe>
               )}
+              {userData._id === post.userId && (
+                <div onClick={() => setIsUpdated(true)}>
+                  <i className="fa-solid fa-pen-to-square"></i>
+                  <i className="fa-regular fa-trash-can"></i>
+                </div>
+              )}
             </div>
             <div className="card-footer">
-                <LikeButton post={post}/>
+              <LikeButton post={post} />
             </div>
           </div>
         </>

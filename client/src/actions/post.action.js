@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_POSTS = "GET_POSTS";
 export const LIKE_POST = "LIKE_POST";
 export const UNLIKE_POST = "UNLIKE_POST";
+export const UPDATE_POST = "UPDATE_POST"
 
 export const getPosts = (num) => {
   return (dispatch) => {
@@ -43,3 +44,17 @@ export const unlikePost = (postid, userId) => {
       .catch((err) => console.log(err));
   };
 };
+
+export const updatePost = (postid, message) => {
+  return (dispatch) => {
+    return axios ({
+      method: "put",
+      url: `${process.env.REACT_APP_API_URL}api/post/` + postid,
+      data: {message}
+    })
+    .then((res) => {
+      dispatch({ type: UPDATE_POST, payload: { message, postid } });
+    })
+    .catch((err) => console.log(err));
+  }
+}
