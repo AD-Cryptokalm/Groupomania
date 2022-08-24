@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPosts, updatePost } from "../../actions/post.action";
 import { dateParser, isEmpty } from "../Utils";
 import LikeButton from "./LikeButton";
+import DeletePost from "./DeleteCard";
 
 const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -14,13 +15,12 @@ const Card = ({ post }) => {
 
   const updateItem = async () => {
     if (textUpdated) {
-       await dispatch(updatePost(post._id, textUpdated))
-       .then(()=> dispatch(getPosts()))
-       .catch((err) => console.log(err));
+      await dispatch(updatePost(post._id, textUpdated))
+        .then(() => dispatch(getPosts()))
+        .catch((err) => console.log(err));
     }
-    setIsUpdated(false)
-  }
-  
+    setIsUpdated(false);
+  };
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -74,7 +74,7 @@ const Card = ({ post }) => {
                       <div className="button-container">
                         <button className="button" onClick={updateItem}>
                           Valider
-                          </button>
+                        </button>
                       </div>
                     </div>
                   )}
@@ -99,15 +99,19 @@ const Card = ({ post }) => {
                   title={post._id}
                 ></iframe>
               )}
-              {userData._id === post.userId && (
-                <div onClick={() => setIsUpdated(true)}>
-                  <i className="fa-solid fa-pen-to-square"></i>
-                  <i className="fa-regular fa-trash-can"></i>
-                </div>
-              )}
             </div>
             <div className="card-footer">
               <LikeButton post={post} />
+              {userData._id === post.userId && (
+                <>
+                <div className="button-card">
+                  <div onClick={() => setIsUpdated(!isUpdated)}>
+                    <i className="fa-solid fa-pen-to-square"></i>
+                  </div>
+                  <DeletePost id={post._id} />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </>

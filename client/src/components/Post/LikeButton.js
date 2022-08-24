@@ -35,7 +35,7 @@ export default function LikeButton({ post }) {
         <i className="fa-regular fa-thumbs-up" onClick={like}></i>
       )}
       {uid && liked && (
-        <i className="fa-solid fa-thumbs-up" onClick={unlike}></i>
+        <i className="fa-solid fa-thumbs-up" id="icon-like" onClick={unlike}></i>
       )}
       <span>{post.userlikers.length}</span>
     </div>

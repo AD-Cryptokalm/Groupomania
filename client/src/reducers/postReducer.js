@@ -1,4 +1,10 @@
-import { GET_POSTS, LIKE_POST, UNLIKE_POST, UPDATE_POST } from "../actions/post.action";
+import {
+  DELETE_POST,
+  GET_POSTS,
+  LIKE_POST,
+  UNLIKE_POST,
+  UPDATE_POST,
+} from "../actions/post.action";
 
 const initialState = {};
 
@@ -13,8 +19,7 @@ export default function postReducer(state = initialState, action) {
             ...post,
             userlikers: [action.payload.userId, ...post.userlikers],
           };
-        }
-        else return post; 
+        } else return post;
       });
 
     case UNLIKE_POST:
@@ -24,21 +29,21 @@ export default function postReducer(state = initialState, action) {
             ...post,
             userlikers: post.userlikers.filter(
               (id) => id !== action.payload.userId
-              ),
-            }
-          }
-          else return post; 
+            ),
+          };
+        } else return post;
       });
-      case UPDATE_POST:
-        return state.map((post) => {
-          if (post._id === action.payload.postId) {
-            return {
-              ...post,
-              message: action.payload.message,
-            }
-          }
-          else return post; 
-        })
+    case UPDATE_POST:
+      return state.map((post) => {
+        if (post._id === action.payload.postId) {
+          return {
+            ...post,
+            message: action.payload.message,
+          };
+        } else return post;
+      });
+    case DELETE_POST:
+      return state.filter((post) => post._id !== action.payload.postId);
     default:
       return state;
   }
