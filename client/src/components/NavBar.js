@@ -11,27 +11,6 @@ export default function NavBar() {
   const uid = useContext(UidContext);
   const userData = useSelector((state) => state.userReducer);
 
-  // // const [pseudo, setPseudo] = useState(null)
-  // const pseudoValue = document.getElementById('pseudoUser')
-  // // axios.get(`${process.env.REACT_APP_API_URL}api/user/`+ `${uid}`)
-  // const getUser = async () => {
-  //   if (uid) {
-  //   try {
-  //     return await axios.get(`${process.env.REACT_APP_API_URL}api/user/${uid}`)
-  //   }catch (err) {
-  //     console.log(err)
-  //   }
-  // }}
-  // const pseudoUser= async ()=> {
-  //   const user = await getUser()
-
-  //   if (user.data.pseudo) {
-  //     pseudoValue.innerHTML = user.data.pseudo
-  //     console.log(user.data)
-  //   }
-  // }
-  // pseudoUser()
-
   return (
     <nav>
       <div className="navBar">

@@ -65,6 +65,7 @@
     margin-top: 2rem;
     min-height: 8rem;
     background-color:  #ffd7d7da;
+    /* max-width: 68rem; */
 }
 
 .post-text {
@@ -95,9 +96,10 @@
     /* justify-content: center;   */
 }
 
+
 .card-like span {
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-left: 1rem;
     display: flex;
     align-items: center;
@@ -107,11 +109,15 @@
     display: flex;
 }
 
+.button-card i {
+    margin-left: 1.3rem;
+}
+
 .card-footer i {
     color: white;
     /* color: #4E5166; */
     font-size: 2.2rem;
-    margin-left: 1.5rem;
+    /* margin-left: 1.5rem; */
     cursor: pointer;
     padding: 0.6rem;
     /* background-color: #ffd7d7da; */

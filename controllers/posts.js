@@ -48,7 +48,6 @@ exports.createPost = async (req, res, next) => {
     userId: req.body.userId,
     message: req.body.message,
     picture: req.file !== null ? "./uploads/posts/" + fileName : "",
-    video: req.body.video,
   });
   try {
     const post = await newPost.save();

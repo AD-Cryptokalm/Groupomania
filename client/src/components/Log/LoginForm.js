@@ -23,21 +23,14 @@ export default function LoginForm() {
         password,
       },
     })
-      .then((res) => {
-          
-        console.log(res);
-        if (res.data.errors) {
-          emailError.innerHTML = res.data.errors.email;
-          passwordError.innerHTML = res.data.errors.password;
-        } else {
-          window.location = "/";
-        }
-        
+      .then(() => {
+        window.location = "/";
       })
       .catch((err) => {
-        setEmail('')
-        setPassword('')
-        console.log(err)
+        emailError.innerHTML = err.response.data.errors.email;
+        passwordError.innerHTML = err.response.data.errors.password;
+        setEmail("");
+        setPassword("");
       });
   };
 

@@ -68,6 +68,7 @@ const Card = ({ post }) => {
                   {isUpdated && (
                     <div className="update-post">
                       <textarea
+                      id="message"
                         defaultValue={post.message}
                         onChange={(e) => setTextUpdated(e.target.value)}
                       />
@@ -88,17 +89,8 @@ const Card = ({ post }) => {
                   className="card-picture-post"
                 />
               )}
-              {post.video && (
-                <iframe
-                  width="500"
-                  height="300"
-                  src={post.video}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title={post._id}
-                ></iframe>
-              )}
+              
+              
             </div>
             <div className="card-footer">
               <LikeButton post={post} />

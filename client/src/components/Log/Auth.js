@@ -12,8 +12,8 @@ export default function Auth() {
       setLoginModal(false);
       setSignUpModal(true);
     } else if (e.target.id === "login") {
-      setLoginModal(true);
       setSignUpModal(false);
+      setLoginModal(true);
     }
   };
 

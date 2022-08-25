@@ -38,7 +38,7 @@ exports.login = async (req, res) => {
 exports.logout = (req, res) => {
   try {
     
-    res.cookie("jwt", "", { maxAge: 1 });
+    res.cookie("jwt", "");
     res.redirect("/");
   } catch (err) {
     console.log(err)
