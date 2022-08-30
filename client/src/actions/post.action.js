@@ -80,8 +80,8 @@ export const uploadPicturePost = (data, _id) => {
         return axios
         .get(`${process.env.REACT_APP_API_URL}api/post/`)
         .then((res) => {
-          const array = res.data.slice(0, 5);
-          dispatch({ type: GET_POSTS, payload: array });
+          
+          dispatch({ type: GET_POSTS, payload: res.data });
         })
       })
       .catch((err) => console.log(err));

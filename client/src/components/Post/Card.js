@@ -87,11 +87,16 @@ const Card = ({ post }) => {
                         <div className="post-container">
                           <p>{post.message}</p>
                         </div>
-                        <img
+                        {post.picture && (
+                          <div>
+                             <img
                           src={post.picture}
                           alt="card-pic"
                           className="card-picture-post"
                         />
+                          </div>
+                        )}
+                       
                       </div>
                     )}
                   </>
