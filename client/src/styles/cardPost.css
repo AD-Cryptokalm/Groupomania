@@ -63,20 +63,22 @@
     box-shadow: 3px 5px 15px 1px rgba(0,0,0,0.84);
     /* margin-left: 2rem; */
     margin-top: 2rem;
+    margin-bottom: 2rem;
     min-height: 8rem;
     background-color:  #ffd7d7da;
+    padding: 0.5rem;
     /* max-width: 68rem; */
 }
 
-.post-text {
+.post-container p {
     padding: 1rem;
     font-size: 1.4rem;
 
 }
 
 .card-picture-post {
-    width: 100%;
-    height: 100%;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
     border: solid 1px white;
     box-shadow: 3px 5px 15px 1px rgba(0,0,0,0.84);
@@ -128,6 +130,15 @@
 
 #icon-like {
     color: green;
+}
+
+.btn-send button {
+    border-radius: 15px;
+    border: solid 1px white;
+    padding: 0.3rem;
+    box-shadow: 3px 5px 10px  rgba(0,0,0,0.84);
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 

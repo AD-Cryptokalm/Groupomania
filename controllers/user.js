@@ -3,12 +3,12 @@ const UserModel = require("../models/User");
 const ObjectId = require("mongoose").Types.ObjectId;
 
 
-module.exports.getAllUser = async (req, res) => {
+exports.getAllUser = async (req, res) => {
   const users = await UserModel.find().select("-password");
   res.status(200).json(users);
 };
 
-module.exports.getOneUser = async (req, res) => {
+exports.getOneUser = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send("Utilisateur inconnu");
 
@@ -18,7 +18,7 @@ module.exports.getOneUser = async (req, res) => {
   }).select("-password");
 };
 
-module.exports.modifyUser = async (req, res) => {
+exports.modifyUser = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send("Utilisateur inconnu");
 
@@ -42,7 +42,7 @@ module.exports.modifyUser = async (req, res) => {
 };
 
 
-module.exports.deleteUser = async (req, res) => {
+exports.deleteUser = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send("Utilisateur inconnu");
 

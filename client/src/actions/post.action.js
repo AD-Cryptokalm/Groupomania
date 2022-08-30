@@ -12,7 +12,7 @@ export const getPosts = (num) => {
     return axios
       .get(`${process.env.REACT_APP_API_URL}api/post/`)
       .then((res) => {
-        const array = res.data.slice(0, num)
+        const array = res.data.slice(0, num);
         dispatch({ type: GET_POSTS, payload: array });
       })
       .catch((err) => console.log(err));
@@ -23,13 +23,10 @@ export const addPost = (data) => {
   return (dispatch) => {
     return axios
       .post(`${process.env.REACT_APP_API_URL}api/post/`, data)
-      .then((res) => {
-        
-        
-      })
+      .then((res) => {})
       .catch((err) => console.log(err));
   };
-}
+};
 
 export const likePost = (postid, userId) => {
   return (dispatch) => {
@@ -61,27 +58,28 @@ export const unlikePost = (postid, userId) => {
 
 export const updatePost = (postId, message) => {
   return (dispatch) => {
-    return axios ({
+    return axios({
       method: "put",
       url: `${process.env.REACT_APP_API_URL}api/post/` + postId,
-      data: {message}
+      data: { message },
     })
-    .then((res) => {
-      dispatch({ type: UPDATE_POST, payload: { message, postId } });
-    })
-    .catch((err) => console.log(err));
-  }
-}
+      .then((res) => {
+        dispatch({ type: UPDATE_POST, payload: { message, postId } });
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
 
 export const deletePost = (postId) => {
   return (dispatch) => {
-    return axios ({
+    return axios({
       method: "delete",
       url: `${process.env.REACT_APP_API_URL}api/post/` + postId,
     })
-    .then((res) => {
-      dispatch({ type: DELETE_POST, payload: { postId } });
-    })
-    .catch((err) => console.log(err));
-  }
-}
+      .then((res) => {
+        dispatch({ type: DELETE_POST, payload: { postId } });
+      })
+      .catch((err) => console.log(err));
+  };
+};

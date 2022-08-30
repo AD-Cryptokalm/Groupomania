@@ -9,12 +9,16 @@ const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdated, setTextUpdated] = useState(null);
+  const [postPicture, setPostPicture] = useState(null);
+  
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
+
   const dispatch = useDispatch();
 
+
   const updateItem = async () => {
-    if (textUpdated) {
+    if (textUpdated ) {
       await dispatch(updatePost(post._id, textUpdated))
         .then(() => dispatch(getPosts()))
         .catch((err) => console.log(err));
@@ -27,7 +31,7 @@ const Card = ({ post }) => {
   }, [usersData]);
 
   return (
-    <li className="card-container" key={post._id}>
+    <div className="card-container" key={post._id}>
       {isLoading ? (
         <i className="fas fa-spinner fa-spin"></i>
       ) : (
@@ -62,45 +66,79 @@ const Card = ({ post }) => {
               <div className="date-post">{dateParser(post.createdAt)}</div>
             </div>
             <div className="card-post">
-              <div className="post-container">
+              <div>
                 <div className="post-text">
-                  {isUpdated === false && <p>{post.message}</p>}
+                  <>
+                    {isUpdated === false && (
+                      <div>
+                        <div className="post-container">
+                          <p>{post.message}</p>
+                        </div>
+                        {postPicture ? (
+                          <li className="card-container-newPost">
+                            <div className="content">
+                              <img src={postPicture} alt="" />
+                            </div>
+                          </li>
+                        ) : (
+                          <img
+                            src={post.picture}
+                            alt="card-pic"
+                            className="card-picture-post"
+                          />
+                        )}
+                       
+                      </div>
+                    )}
+                  </>
                   {isUpdated && (
                     <div className="update-post">
-                      <textarea
-                      id="message"
-                        defaultValue={post.message}
-                        onChange={(e) => setTextUpdated(e.target.value)}
-                      />
-                      <div className="button-container">
+                      <div className="post-container">
+                        <textarea
+                          id="message"
+                          defaultValue={post.message}
+                          onChange={(e) => setTextUpdated(e.target.value)}
+                        />
+                      </div>
+                      <div className="btn-send">
                         <button className="button" onClick={updateItem}>
                           Valider
                         </button>
                       </div>
+                    
+                      {post.picture && (
+                        <div>
+                        <img
+                          src={post.picture}
+                          alt="card-pic"
+                          className="card-picture-post"
+                        />
+                        
+                        </div>
+                        
+                      )}
+                      {/* <input
+                        type="file"
+                        id="file-upload1"
+                        name="file"
+                        accept=".jpg, .jpeg, .png"
+                        onChange={(e) => handlePicture(e)}
+                      /> */}
                     </div>
                   )}
                 </div>
               </div>
               <br />
-              {post.picture && (
-                <img
-                  src={post.picture}
-                  alt="card-pic"
-                  className="card-picture-post"
-                />
-              )}
-              
-              
             </div>
             <div className="card-footer">
               <LikeButton post={post} />
               {userData._id === post.userId && (
                 <>
-                <div className="button-card">
-                  <div onClick={() => setIsUpdated(!isUpdated)}>
-                    <i className="fa-solid fa-pen-to-square"></i>
-                  </div>
-                  <DeletePost id={post._id} />
+                  <div className="button-card">
+                    <div onClick={() => setIsUpdated(!isUpdated)}>
+                      <i className="fa-solid fa-pen-to-square"></i>
+                    </div>
+                    <DeletePost id={post._id} />
                   </div>
                 </>
               )}
@@ -108,7 +146,7 @@ const Card = ({ post }) => {
           </div>
         </>
       )}
-    </li>
+    </div>
   );
 };
 

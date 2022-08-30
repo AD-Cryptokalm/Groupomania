@@ -8,10 +8,13 @@ const upload = multer()
 // importer le controller de Post
 const postsCtrl = require('../controllers/posts');
 const likesCtrl = require('../controllers/likes');
+const uploadCtrl = require('../controllers/uploadPost')
+
 
 
 
 router.get('/',postsCtrl.getAllPost);
+router.get('/:id',postsCtrl.getOnePost);
 router.post("/", upload.single('file'),postsCtrl.createPost);
 router.put('/:id', postsCtrl.modifyPost);
 router.delete('/:id', postsCtrl.deletePost); 
@@ -19,6 +22,6 @@ router.delete('/:id', postsCtrl.deletePost);
 router.patch('/like/:id', likesCtrl.likePost);
 router.patch('/unlike/:id', likesCtrl.unlikePost);
 
-
+router.post('/upload', upload.single('file'), uploadCtrl.uploadPicturePost)
 
 module.exports = router;

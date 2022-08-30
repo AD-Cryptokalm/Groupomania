@@ -13,6 +13,17 @@ const MIME_TYPES = {
   "image/gif": "gif",
 };
 
+
+exports.getOnePost = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id))
+    return res.status(400).send("Utilisateur inconnu");
+
+  postModel.findById(req.params.id, (err, data) => {
+    if (res) res.send(data);
+    else console.log("Utilisateur inconnu");
+  })
+};
+
 // Voir tous les posts
 exports.getAllPost = (req, res, next) => {
   postModel.find((err, data) => {
