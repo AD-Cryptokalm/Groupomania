@@ -71,16 +71,18 @@ export const updatePost = (postId, message) => {
   };
 };
 
-export const uploadPicturePost = (data, id) => {
+export const uploadPicturePost = (data, _id) => {
   return (dispatch) => {
     return axios
       .post(`${process.env.REACT_APP_API_URL}api/post/upload`, data)
       .then((res) => {
+        console.log(res.data)
         return axios
-          .get(`${process.env.REACT_APP_API_URL}api/post/upload/` + id)
-          .then((res) => {
-            dispatch({ type: UPLOAD_PIC_POST, payload: res.data.picture });
-          });
+        .get(`${process.env.REACT_APP_API_URL}api/post/`)
+        .then((res) => {
+          const array = res.data.slice(0, 5);
+          dispatch({ type: GET_POSTS, payload: array });
+        })
       })
       .catch((err) => console.log(err));
   };

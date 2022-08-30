@@ -11,7 +11,7 @@ export default function Thread() {
   const [loadPost, setLoadPost] = useState(true);
   const [count, setCount] = useState(5)
   const dispatch = useDispatch();
-  const posts = useSelector((state) => state.postReducer)
+  const post = useSelector((state) => state.postReducer)
 
   const loadMore = () => {
     if (window.innerHeight + document.documentElement.scrollTop + 1 > 
@@ -34,9 +34,9 @@ export default function Thread() {
   return (
     <div className="thread-container">
         <ul>
-            {!isEmpty(posts[0]) &&
-            posts.map((post) => {
-                return <Card post={post} key={post.id}/>
+            {!isEmpty(post[0]) &&
+            post.map((post) => {
+                return <Card post={post} key={post._id}/>
             })
             }
         </ul>

@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts, updatePost } from "../../actions/post.action";
+import { getPosts, updatePost, uploadPicturePost } from "../../actions/post.action";
 import { dateParser, isEmpty } from "../Utils";
 import LikeButton from "./LikeButton";
 import DeletePost from "./DeleteCard";
-import { uploadPicturePost } from "../../actions/post.action";
 
 const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,9 +34,11 @@ const Card = ({ post }) => {
     data.append("_id", post._id);
     data.append("file", file);
 
+   
     dispatch(uploadPicturePost(data, post._id))
+    
   };
-   console.log(post);
+  
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
   }, [usersData]);
