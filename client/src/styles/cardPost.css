@@ -4,6 +4,7 @@
     box-shadow: 3px 5px 15px 1px rgba(0,0,0,0.84);
     padding: 16px;
     margin: 30px auto;
+    width: 80%;
     min-height: 10rem;
     max-width: 85rem;
     position: relative;
@@ -139,6 +140,59 @@
     box-shadow: 3px 5px 10px  rgba(0,0,0,0.84);
     margin-left: 0.5rem;
     margin-bottom: 1rem;
+}
+
+.upload-picture-post {
+    display: flex;
+    flex-direction: column;
+    max-width: 30rem;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .upload-picture-post input  {
+    border-radius: 15px;
+    border: solid 1px white;
+    padding: 0.3rem;
+    box-shadow: 3px 5px 10px  rgba(0,0,0,0.84);
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
+    background: white;
+}
+
+.upload-picture-post label {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: white;
+}
+*/
+
+
+#form input {
+    margin: 1rem 1rem;
+    font-size: 1.5rem;
+    /* width: 22rem; */
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border-radius: 15px;
+    border: solid 1px white;
+    cursor: pointer; 
+    color: white;
+    background-color: #4E5166;
+    box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, 0.523);
+}  
+
+#form input:hover {
+    background-color: #FFD7D7;
+    color: #4E5166;
+}
+
+#form label {
+    /* display: block; */
+    margin-bottom: 0.3rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
 }
 
 

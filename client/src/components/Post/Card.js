@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts, updatePost, uploadPicturePost } from "../../actions/post.action";
+import {
+  getPosts,
+  updatePost,
+  uploadPicturePost,
+} from "../../actions/post.action";
 import { dateParser, isEmpty } from "../Utils";
 import LikeButton from "./LikeButton";
 import DeletePost from "./DeleteCard";
+import "../../styles/cardPost.css";
 
 const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdated, setTextUpdated] = useState(null);
   // const [postPicture, setPostPicture] = useState(null);
-  const [file, setFile] = useState()
+  const [file, setFile] = useState();
   const dispatch = useDispatch();
 
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
-
 
   const updateItem = async () => {
     if (textUpdated) {
@@ -25,7 +29,7 @@ const Card = ({ post }) => {
     }
     setIsUpdated(false);
   };
-  
+
   const handlePicturePost = (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -34,11 +38,9 @@ const Card = ({ post }) => {
     data.append("_id", post._id);
     data.append("file", file);
 
-   
-    dispatch(uploadPicturePost(data, post._id))
-    
+    dispatch(uploadPicturePost(data, post._id));
   };
-  
+
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
   }, [usersData]);
@@ -89,14 +91,13 @@ const Card = ({ post }) => {
                         </div>
                         {post.picture && (
                           <div>
-                             <img
-                          src={post.picture}
-                          alt="card-pic"
-                          className="card-picture-post"
-                        />
+                            <img
+                              src={post.picture}
+                              alt="card-pic"
+                              className="card-picture-post"
+                            />
                           </div>
                         )}
-                       
                       </div>
                     )}
                   </>
@@ -124,26 +125,36 @@ const Card = ({ post }) => {
                           />
                           <form
                             action=""
+                            id="form"
                             onSubmit={handlePicturePost}
-                            className="upload-picture"
+                            className="upload-picture-post"
                           >
-                            <label htmlFor="file">
+                            <label htmlFor="file" className="label-file">
                               Modifier l'image
                             </label>
                             <br />
-                            <input
-                              type="file"
-                              id="file"
-                              name="file"
-                              accept=".jpeg, .jpg, .png, .gif"
-                              onChange={(e) => setFile(e.target.files[0])}
-                            />
+                            <div className="card-footer new">
+                              <>
+                                <i className="fa-regular fa-image"></i>
+                                <input
+                                  type="file"
+                                  id="file-upload"
+                                  name="file"
+                                  accept=".jpg, .jpeg, .png"
+                                  onChange={(e) => setFile(e.target.files[0])}
+                                />
+                              </>
+                            </div>
+
                             <br />
-                            <input type="submit" value="Envoyer" />
+                            <input
+                              type="submit"
+                              value="Envoyer"
+                              className="btn-send"
+                            />
                           </form>
                         </div>
                       )}
-                    
                     </div>
                   )}
                 </div>
