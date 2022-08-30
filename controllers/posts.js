@@ -14,7 +14,9 @@ const MIME_TYPES = {
 };
 
 
-exports.getOnePost = async (req, res) => {
+
+
+exports.getPost = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send("Utilisateur inconnu");
 

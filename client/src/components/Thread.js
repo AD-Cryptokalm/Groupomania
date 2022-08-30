@@ -36,7 +36,7 @@ export default function Thread() {
         <ul>
             {!isEmpty(posts[0]) &&
             posts.map((post) => {
-                return <Card post={post} key={post._id}/>
+                return <Card post={post} key={post.id}/>
             })
             }
         </ul>

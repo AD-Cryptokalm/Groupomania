@@ -4,28 +4,40 @@ import { getPosts, updatePost } from "../../actions/post.action";
 import { dateParser, isEmpty } from "../Utils";
 import LikeButton from "./LikeButton";
 import DeletePost from "./DeleteCard";
+import { uploadPicturePost } from "../../actions/post.action";
 
 const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdated, setTextUpdated] = useState(null);
-  const [postPicture, setPostPicture] = useState(null);
-  
+  // const [postPicture, setPostPicture] = useState(null);
+  const [file, setFile] = useState()
+  const dispatch = useDispatch();
+
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
 
-  const dispatch = useDispatch();
-
 
   const updateItem = async () => {
-    if (textUpdated ) {
+    if (textUpdated) {
       await dispatch(updatePost(post._id, textUpdated))
         .then(() => dispatch(getPosts()))
         .catch((err) => console.log(err));
     }
     setIsUpdated(false);
   };
+  
+  const handlePicturePost = (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    console.log(post._id);
+    data.append("name", post.userId);
+    data.append("_id", post._id);
+    data.append("file", file);
 
+    dispatch(uploadPicturePost(data, post._id))
+  };
+   console.log(post);
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
   }, [usersData]);
@@ -74,20 +86,11 @@ const Card = ({ post }) => {
                         <div className="post-container">
                           <p>{post.message}</p>
                         </div>
-                        {postPicture ? (
-                          <li className="card-container-newPost">
-                            <div className="content">
-                              <img src={postPicture} alt="" />
-                            </div>
-                          </li>
-                        ) : (
-                          <img
-                            src={post.picture}
-                            alt="card-pic"
-                            className="card-picture-post"
-                          />
-                        )}
-                       
+                        <img
+                          src={post.picture}
+                          alt="card-pic"
+                          className="card-picture-post"
+                        />
                       </div>
                     )}
                   </>
@@ -105,25 +108,36 @@ const Card = ({ post }) => {
                           Valider
                         </button>
                       </div>
-                    
+
                       {post.picture && (
                         <div>
-                        <img
-                          src={post.picture}
-                          alt="card-pic"
-                          className="card-picture-post"
-                        />
-                        
+                          <img
+                            src={post.picture}
+                            alt="card-pic"
+                            className="card-picture-post"
+                          />
+                          <form
+                            action=""
+                            onSubmit={handlePicturePost}
+                            className="upload-picture"
+                          >
+                            <label htmlFor="file">
+                              Modifier l'image
+                            </label>
+                            <br />
+                            <input
+                              type="file"
+                              id="file"
+                              name="file"
+                              accept=".jpeg, .jpg, .png, .gif"
+                              onChange={(e) => setFile(e.target.files[0])}
+                            />
+                            <br />
+                            <input type="submit" value="Envoyer" />
+                          </form>
                         </div>
-                        
                       )}
-                      {/* <input
-                        type="file"
-                        id="file-upload1"
-                        name="file"
-                        accept=".jpg, .jpeg, .png"
-                        onChange={(e) => handlePicture(e)}
-                      /> */}
+                    
                     </div>
                   )}
                 </div>

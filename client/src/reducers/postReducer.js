@@ -5,6 +5,7 @@ import {
   LIKE_POST,
   UNLIKE_POST,
   UPDATE_POST,
+  UPLOAD_PIC_POST,
   
 } from "../actions/post.action";
 
@@ -45,9 +46,11 @@ export default function postReducer(state = initialState, action) {
             };
           } else return post;
         });
-        
-      ;
-
+      case UPLOAD_PIC_POST:
+         return  {
+          ...state,
+          picture: action.payload
+         }
     case DELETE_POST:
       return state.filter((post) => post._id !== action.payload.postId);
     default:

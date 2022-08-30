@@ -6,6 +6,7 @@ export const LIKE_POST = "LIKE_POST";
 export const UNLIKE_POST = "UNLIKE_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
+export const UPLOAD_PIC_POST = "UPLOAD_PIC_POST";
 
 export const getPosts = (num) => {
   return (dispatch) => {
@@ -70,6 +71,20 @@ export const updatePost = (postId, message) => {
   };
 };
 
+export const uploadPicturePost = (data, id) => {
+  return (dispatch) => {
+    return axios
+      .post(`${process.env.REACT_APP_API_URL}api/post/upload`, data)
+      .then((res) => {
+        return axios
+          .get(`${process.env.REACT_APP_API_URL}api/post/upload/` + id)
+          .then((res) => {
+            dispatch({ type: UPLOAD_PIC_POST, payload: res.data.picture });
+          });
+      })
+      .catch((err) => console.log(err));
+  };
+};
 
 export const deletePost = (postId) => {
   return (dispatch) => {

@@ -13,8 +13,8 @@ const uploadCtrl = require('../controllers/uploadPost')
 
 
 
+router.get('/:id',postsCtrl.getPost);
 router.get('/',postsCtrl.getAllPost);
-router.get('/:id',postsCtrl.getOnePost);
 router.post("/", upload.single('file'),postsCtrl.createPost);
 router.put('/:id', postsCtrl.modifyPost);
 router.delete('/:id', postsCtrl.deletePost); 
