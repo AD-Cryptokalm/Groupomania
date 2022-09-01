@@ -35,9 +35,20 @@
     color: white;
 }
 
-
-
 .error {
     color: rgb(232, 110, 110);
     font-size: 1.5rem;
 }
+
+.pseudo.error {
+    color: rgb(232, 110, 110);
+}
+
+.email.error {
+    color: rgb(232, 110, 110);
+}
+
+.password.error {
+    color: rgb(232, 110, 110);
+}
+

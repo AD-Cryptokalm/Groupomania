@@ -16,6 +16,11 @@
     
 }
 
+.form-container ul {
+    margin-top: 0.3rem;
+    padding-right: 0.5rem;
+}
+
 .formModal {
     flex: 2;
 }

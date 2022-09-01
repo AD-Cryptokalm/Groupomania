@@ -1,4 +1,4 @@
-module.exports.signUpErrors = (err) => {
+exports.signUpErrors = (err) => {
   let errors = { pseudo: "", email: "", password: "" };
 
   if (err.message.includes("pseudo"))
@@ -7,7 +7,7 @@ module.exports.signUpErrors = (err) => {
   if (err.message.includes("email"))
     errors.email = "Email invalide";
 
-  if (err.message.content("password"))
+  if (err.message.includes("password"))
     errors.password = "Le mot de passe doit contenir 6 caractères minimum";
 
   if (err.code === 11000 && Object.keys(err.keyValue)[0].includes("pseudo"))
@@ -19,7 +19,7 @@ module.exports.signUpErrors = (err) => {
   return errors;
 };
 
-module.exports.loginErrors = (err) => {
+exports.loginErrors = (err) => {
   let errors = { email: "", password: "" };
 
   if (err.message.includes("email"))

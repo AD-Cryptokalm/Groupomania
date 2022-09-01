@@ -51,14 +51,15 @@ export default function SignUpForm() {
           })
         
         .catch((err) => {
+          console.log(err)
           setPseudo("");
           setEmail("");
           setPassword("");
           setConfirmPassword("");
           terms.checked = "";
-          pseudoError.innerHTML = err.response.data.errors.pseudo;
-          emailError.innerHTML = err.response.data.errors.email;
-          passwordError.innerHTML = err.response.data.errors.password;
+          pseudoError.innerHTML = err.response.data.pseudo;
+          emailError.innerHTML = err.response.data.email;
+          passwordError.innerHTML = err.response.data.password;
         });
     }
   };
