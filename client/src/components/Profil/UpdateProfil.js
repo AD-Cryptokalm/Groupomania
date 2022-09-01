@@ -23,7 +23,7 @@ export default function UpdateProfil() {
             <img className="img-profil" src={userData.picture} alt="user-pic" />
           </div>
           <UploadImg />
-          <form action="" onSubmit={handleProfil}>
+          <form action="" onSubmit={handleProfil} className="upload-picture">
             <label htmlFor="pseudo">Modifier pseudo</label>
             <br />
             <input

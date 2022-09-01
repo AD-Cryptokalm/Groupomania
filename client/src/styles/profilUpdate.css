@@ -1,39 +1,28 @@
 .profil-container {
     padding-top: 3rem;
     color: white;
-    width: 100%;
-    
-    
+    width: 100%;    
 }
 
 .container-form-update {
     display: flex;
     justify-content: center;
-    /* margin: 5rem 5rem; */
     flex-wrap: wrap;
     width: auto;
-
-
 }
 
 .form-update-profil {
     border: solid 2px #FD2D01;
     border-radius: 15px;
     box-shadow: 3px 5px 15px 1px rgba(0,0,0,0.84);
-    /* text-align: center; */
-    margin: 5rem 5rem;
+    margin:3rem 1rem;
     padding: 3rem 2rem;
     width: 35%;
-    
-    /* height: 35rem; */
-    min-width: 22.6rem;
-    /* display: flex; */
-    /* flex-direction: column; */
+    min-width: 27rem;
     justify-content: center;
 }
 
 .imageProfilUrl {
-    /* border: solid 2px black; */
     height: 40%;
     width: 140px;
     border-radius: 25px;
