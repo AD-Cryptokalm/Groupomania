@@ -31,13 +31,14 @@ export const uploadPicture = (data, id) => {
   };
 };
 
-export const updateProfil = (userId, pseudo) => {
+export const updateProfil = (userId, pseudo, password) => {
   return (dispatch) => {
     return axios({
       method: "put",
       url: `${process.env.REACT_APP_API_URL}api/user/` + userId,
       data: {
         pseudo,
+        password,
         
       },
     })

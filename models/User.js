@@ -17,6 +17,7 @@ const userSchema = mongoose.Schema({
     type: String,
     default: "./uploads/profil/photoProfil.png",
   },
+  isAdmin: { type: Boolean, default: false},
   
 });
 

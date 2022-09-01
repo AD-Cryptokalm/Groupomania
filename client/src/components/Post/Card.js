@@ -163,7 +163,7 @@ const Card = ({ post }) => {
             </div>
             <div className="card-footer">
               <LikeButton post={post} />
-              {userData._id === post.userId && (
+              {(userData._id === post.userId || userData.isAdmin === true) && (
                 <>
                   <div className="button-card">
                     <div onClick={() => setIsUpdated(!isUpdated)}>
