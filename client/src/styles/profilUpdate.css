@@ -11,6 +11,13 @@
     width: auto;
 }
 
+@media only screen and (max-width: 663px){ 
+    .container-form-update {
+        justify-content: start;
+    }
+
+}
+
 .form-update-profil {
     border: solid 2px #FD2D01;
     border-radius: 15px;

@@ -43,11 +43,22 @@
     justify-content: space-between;
 }
 
+.card-container-newPost {
+    
+    /* padding: 16px; */
+   margin-bottom: 2rem;
+    /* min-height: 10rem; */
+    max-width: 30rem;
+    position: relative;
+    display: flex;
+    /* width: 30rem;
+    height: 25rem; */
+}
 
 
 .content img {
-    width: 30rem;
-    height: 25rem;
+    width: 25rem;
+    height: 22rem;
     /* width: 100%; */
     object-fit: cover;
     border-radius: 15px;
@@ -57,14 +68,4 @@
     box-shadow: 3px 5px 15px 1px rgba(0,0,0,0.84);
 }
 
-.card-container-newPost {
-    
-    /* padding: 16px; */
-   margin-bottom: 2rem;
-    min-height: 10rem;
-    max-width: 85rem;
-    position: relative;
-    display: flex;
-    width: 30rem;
-    height: 25rem;
-}
+
