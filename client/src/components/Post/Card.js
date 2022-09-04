@@ -85,7 +85,7 @@ const Card = ({ post }) => {
                 <div className="post-text">
                   <>
                     {isUpdated === false && (
-                      <div className="card-right">
+                      <div >
                         <div className="post-container">
                           <p>{post.message}</p>
                         </div>

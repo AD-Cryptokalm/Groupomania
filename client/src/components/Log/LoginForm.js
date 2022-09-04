@@ -62,7 +62,7 @@ export default function LoginForm() {
       />
       <div className="password error"></div>
       <br />
-      <input type="submit" value="Se connecter" />
+      <input type="submit" value="Envoyer" />
     </form>
   );
 }

@@ -1,0 +1,42 @@
+.container-connexion {
+    position: relative;
+}
+
+.block-log {
+    animation: fadein 6s;
+}
+
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+    opacity:1;
+    }
+}
+
+.anim-logo {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    animation: fadeout 4s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeout {
+    0% {
+    opacity:1;
+    }
+   
+    100% {
+    opacity:0;
+    }
+   }
+
+.anim-logo img {
+    width: 54rem;
+}

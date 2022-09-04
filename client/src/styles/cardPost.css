@@ -10,6 +10,16 @@
     min-width: 27rem;
     position: relative;
     display: flex;
+    animation: fadeinCard 2s;
+}
+
+@keyframes fadeinCard {
+    0% {
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
 }
 
 @media only screen and (max-width: 663px){ 
@@ -177,6 +187,11 @@
     border: solid 1px white;
     border-radius: 25px;
     box-shadow: 3px 5px 10px  rgba(0,0,0,0.84);
+    transition: all .3s ease-in-out;
+}
+
+.card-footer i:hover {
+    transform: scale(1.12); 
 }
 
 #icon-like {
@@ -190,6 +205,12 @@
     box-shadow: 3px 5px 10px  rgba(0,0,0,0.84);
     margin-left: 0.5rem;
     margin-bottom: 1rem;
+    /* transform: scale(1.1); */
+    transition: all .2s ease-in-out;
+}
+
+.btn-send button:hover {
+    transform: scale(1.1);
 }
 
 .upload-picture-post {
@@ -200,22 +221,7 @@
     align-items: center;
 }
 
-/* .upload-picture-post input  {
-    border-radius: 15px;
-    border: solid 1px white;
-    padding: 0.3rem;
-    box-shadow: 3px 5px 10px  rgba(0,0,0,0.84);
-    margin-left: 0.5rem;
-    margin-bottom: 1rem;
-    background: white;
-}
 
-.upload-picture-post label {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: white;
-}
-*/
 
 
 #form input {
@@ -230,6 +236,7 @@
     color: white;
     background-color: #4E5166;
     box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, 0.523);
+    
 }  
 
 #form input:hover {

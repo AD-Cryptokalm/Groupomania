@@ -10,11 +10,14 @@
     color: white;
     background-color: #4E5166;
     box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, 0.523);
+    transition: all .2s ease-in-out;
 }  
+  
 
 #form input:hover {
     background-color: #FFD7D7;
     color: #4E5166;
+    transform: scale(1.1); 
 }
 
 #form label {

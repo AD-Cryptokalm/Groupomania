@@ -6,4 +6,15 @@
 
 .profil-container {
     flex: 2;
+    animation: fadeinProfil 2.5s;
+}
+
+@keyframes fadeinProfil {
+    0% {
+    opacity:0;
+    }
+
+    100% {
+    opacity:1;
+    }
 }

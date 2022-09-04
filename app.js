@@ -8,9 +8,7 @@ require("dotenv").config();
 // importer les routers
 const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
-
-const path = require("path");
-const { appendFile } = require("fs");
+const { checkUser, requireAuth } = require("./middleware/authMiddleware");
 
 // connection au server mongoose
 mongoose
@@ -21,8 +19,6 @@ mongoose
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
-
-  const {checkUser, requireAuth} = require('./middleware/authMiddleware')
 
 // créer une application express
 const app = express();
@@ -46,10 +42,11 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-app.get('*', checkUser);
-app.get('/jwtid', requireAuth, (req, res) => {
-  res.status(200).send(res.locals.user._id)
-})
+app.use('*', checkUser);
+
+app.get("/jwtid", requireAuth, (req, res) => {
+  res.status(200).send(res.locals.user._id);
+});
 
 // pour cette route utiliser la route saucesRoutes
 app.use("/api/post", postsRoutes);
