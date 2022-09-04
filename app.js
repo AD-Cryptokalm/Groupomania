@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(cookieParser());
 
-app.use('*', checkUser);
+app.get('*', checkUser);
 app.get("/jwtid", requireAuth, (req, res) => {
   res.status(200).send(res.locals.user._id);
 });

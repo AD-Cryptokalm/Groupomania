@@ -8,6 +8,7 @@ const upload = multer()
 const authCtrl = require("../controllers/auth");
 const userCtrl = require("../controllers/user");
 const uploadCtrl = require("../controllers/upload");
+const { checkUser } = require("../middleware/authMiddleware");
 
 //Auth user
 router.post("/signup",authCtrl.signUp);
@@ -15,10 +16,10 @@ router.post("/login",authCtrl.login);
 router.get("/logout", authCtrl.logout);
 
 //User profil
-router.get("/", userCtrl.getAllUser);
-router.get("/:id", userCtrl.getOneUser);
-router.put("/:id",  userCtrl.modifyUser);
-router.delete("/:id", userCtrl.deleteUser);
+router.get("/", checkUser, userCtrl.getAllUser);
+router.get("/:id", checkUser, userCtrl.getOneUser);
+router.put("/:id", checkUser,  userCtrl.modifyUser);
+router.delete("/:id", checkUser, userCtrl.deleteUser);
 
 router.post('/upload', upload.single('file'), uploadCtrl.uploadProfil)
 
