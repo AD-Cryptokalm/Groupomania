@@ -3,7 +3,6 @@ const express = require("express");
 const router = express.Router();
 const multer = require('multer');
 const upload = multer()
-// const multer = require("../middleware/multer-config");
 
 // importer le controller de user
 const authCtrl = require("../controllers/auth");
@@ -22,7 +21,5 @@ router.put("/:id",  userCtrl.modifyUser);
 router.delete("/:id", userCtrl.deleteUser);
 
 router.post('/upload', upload.single('file'), uploadCtrl.uploadProfil)
-
-
 
 module.exports = router;

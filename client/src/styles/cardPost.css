@@ -25,18 +25,13 @@
 @media only screen and (max-width: 663px){ 
     .card-container {
         flex-direction: column;
-        /* justify-content: center; */
         align-items: center;
     }
-
     .newPost-container {
         margin-top: 1.5rem;
         padding: 0;
-        /* width: 100%; */
         min-width: 23rem;
     }
-
-    
 }
 
 .fas  {
@@ -49,7 +44,6 @@
 }
 
 .card-left {
-    /* border: solid 2px black; */
     height: 70px;
     width: 70px;
     border-radius: 25px;
@@ -83,7 +77,6 @@
 .pseudo {
     color: white;
     font-size: medium;
-    /* margin-left: 2rem; */
 }
 
 .date-post {
@@ -107,26 +100,20 @@
         flex-direction: column;
         align-items: center;
     }
-    
-
     .post-container {
         margin-top: 1.5rem;
         padding: 0;
         min-width: 23rem;
     }
-
     .date-post {
         margin-top: 0.6rem;
         color: white;
-    }
-
-    
+    } 
 }
 
 .post-container p {
     padding: 1rem;
     font-size: 1.4rem;
-
 }
 
 .card-picture-post {
@@ -137,7 +124,6 @@
     box-shadow: 3px 5px 15px 1px rgba(0,0,0,0.84);
     border-radius: 17px;
     margin-bottom: 1.5rem;
-    
 }
 
 @media only screen and (max-width: 663px){ 
@@ -145,7 +131,6 @@
         width: 20rem;
         height: 18rem;
     }
-
 }
 
 .card-footer {
@@ -153,12 +138,11 @@
     position:relative;
     align-items: center;
 }
+
 .card-like {
     flex: 2;
     display: flex;
-    /* justify-content: center;   */
 }
-
 
 .card-like span {
     color: white;
@@ -178,12 +162,9 @@
 
 .card-footer i {
     color: white;
-    /* color: #4E5166; */
     font-size: 2.2rem;
-    /* margin-left: 1.5rem; */
     cursor: pointer;
     padding: 0.6rem;
-    /* background-color: #ffd7d7da; */
     border: solid 1px white;
     border-radius: 25px;
     box-shadow: 3px 5px 10px  rgba(0,0,0,0.84);
@@ -205,7 +186,6 @@
     box-shadow: 3px 5px 10px  rgba(0,0,0,0.84);
     margin-left: 0.5rem;
     margin-bottom: 1rem;
-    /* transform: scale(1.1); */
     transition: all .2s ease-in-out;
 }
 
@@ -221,13 +201,9 @@
     align-items: center;
 }
 
-
-
-
 #form input {
     margin: 1rem 1rem;
     font-size: 1.5rem;
-    /* width: 22rem; */
     padding: 0.5rem 1rem;
     font-weight: bold;
     border-radius: 15px;
@@ -236,7 +212,6 @@
     color: white;
     background-color: #4E5166;
     box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, 0.523);
-    
 }  
 
 #form input:hover {
@@ -245,7 +220,6 @@
 }
 
 #form label {
-    /* display: block; */
     margin-bottom: 0.3rem;
     font-size: 1.5rem;
     font-weight: bold;

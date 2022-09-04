@@ -1,14 +1,8 @@
 import { NavLink } from "react-router-dom";
 import  "../styles/navBarIcon.css"
-// import Home from "../pages/Home";
-// import Profil from "../pages/Profil";
-
-
-
 
 export default function NavBarIcon() {
 
-    
     return (
         <div className="container-navBarIcon">
             <ul className="icon-list">

@@ -9,7 +9,6 @@ import Log from "../components/Log/Auth";
 export default function Home() {
   const uid = useContext(UidContext);
 
-
   return (
     <>
     {uid ? <div className="home-container">

@@ -10,7 +10,6 @@ const MIME_TYPES = {
   "image/png": "png",
   "image/gif": "gif",
 };
-// const path = require("path");
 
 exports.uploadPicturePost = async (req, res) => {
   try {

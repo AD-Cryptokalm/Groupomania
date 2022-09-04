@@ -8,7 +8,6 @@
   box-sizing: border-box;
   list-style-type: none;
   font-family: 'Lato', sans-serif;
-
 }
 
 body {
@@ -17,7 +16,3 @@ body {
   z-index: -10;
 }
 
-
-/* input{ transition: all .2s ease-in-out; }
-
-input:hover { transform: scale(1.1); } */

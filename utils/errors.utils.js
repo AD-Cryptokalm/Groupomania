@@ -31,7 +31,7 @@ exports.loginErrors = (err) => {
   return errors;
 };
 
-module.exports.uploadErrors = (err) => {
+exports.uploadErrors = (err) => {
   let errors = { format: '', maxSize: "" };
 
   if (errors.message.includes("invalid file"))

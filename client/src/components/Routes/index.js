@@ -6,7 +6,6 @@ import NavBar from "../NavBar";
 
 export default function Auth() {
 
-
   return (
       <BrowserRouter>
       <NavBar />

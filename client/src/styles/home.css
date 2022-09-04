@@ -24,7 +24,6 @@
     padding: 0.8rem;
     font-size: 1.4rem;
     margin-bottom: 1.5rem;
-    /* max-width: 81rem; */
 }
 
 #file-upload {
@@ -44,25 +43,18 @@
 }
 
 .card-container-newPost {
-    
-    /* padding: 16px; */
    margin-bottom: 2rem;
-    /* min-height: 10rem; */
     max-width: 30rem;
     position: relative;
     display: flex;
-    /* width: 30rem;
-    height: 25rem; */
 }
 
 
 .content img {
     width: 25rem;
     height: 22rem;
-    /* width: 100%; */
     object-fit: cover;
     border-radius: 15px;
-    /* margin-top: 12px; */
     border: solid 1px white;
     border-radius: 15px;
     box-shadow: 3px 5px 15px 1px rgba(0,0,0,0.84);

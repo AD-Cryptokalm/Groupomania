@@ -8,13 +8,11 @@
     width: 80%;
     max-width: 50rem;
     position: relative;
-    /* height: 30rem; */
 }
 
 .form-container {
     display: flex;
     justify-content: space-between;
-    
 }
 
 .form-container ul {

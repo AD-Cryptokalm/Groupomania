@@ -19,7 +19,6 @@ mongoose
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
-
 // créer une application express
 const app = express();
 
@@ -39,11 +38,9 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-
 app.use(cookieParser());
 
 app.use('*', checkUser);
-
 app.get("/jwtid", requireAuth, (req, res) => {
   res.status(200).send(res.locals.user._id);
 });
@@ -53,9 +50,8 @@ app.use("/api/post", postsRoutes);
 // pour cette route utiliser la route userRoutes
 app.use("/api/user", userRoutes);
 
-// app.use("/upload", express.static(path.join(__dirname, "images")));
 
 app.use(helmet());
 
-// exporter const app pour y acceder depuis les autres fichiers
+
 module.exports = app;

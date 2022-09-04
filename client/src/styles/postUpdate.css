@@ -1,15 +1,8 @@
 .imagePostUrl {
-    /* border: solid 2px black; */
     height: 40px;
     width: 140px;
     border-radius: 25px;
     margin: 1rem auto;
-   
-   
-    
-    /* padding: 5rem; */
-    
-
 }
 
 .imagePostUrl img{

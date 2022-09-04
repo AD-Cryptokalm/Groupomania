@@ -3,7 +3,6 @@ import axios from "axios";
 export const GET_USER = "GET_USER";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 export const UPDATE_PROFIL = "UPDATE_PROFIL";
-// export const GET_USER_ERRORS= "GET_USER_ERRORS"
 
 export const getUser = (uid) => {
   return (dispatch) => {
@@ -39,7 +38,6 @@ export const updateProfil = (userId, pseudo, password) => {
       data: {
         pseudo,
         password,
-        
       },
     })
     .then((res) => {

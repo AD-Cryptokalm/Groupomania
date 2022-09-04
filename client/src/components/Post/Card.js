@@ -14,7 +14,6 @@ const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdated, setTextUpdated] = useState(null);
-  // const [postPicture, setPostPicture] = useState(null);
   const [file, setFile] = useState();
   const dispatch = useDispatch();
 
@@ -85,7 +84,7 @@ const Card = ({ post }) => {
                 <div className="post-text">
                   <>
                     {isUpdated === false && (
-                      <div >
+                      <div>
                         <div className="post-container">
                           <p>{post.message}</p>
                         </div>

@@ -1,19 +1,16 @@
 import {
   DELETE_POST,
-  
   GET_POSTS,
   LIKE_POST,
   UNLIKE_POST,
   UPDATE_POST,
   UPLOAD_PIC_POST,
-  
 } from "../actions/post.action";
 
 const initialState = {};
 
 export default function postReducer(state = initialState, action) {
   switch (action.type) {
-    
     case GET_POSTS:
       return action.payload;
     case LIKE_POST:
@@ -25,7 +22,6 @@ export default function postReducer(state = initialState, action) {
           };
         } else return post;
       });
-
     case UNLIKE_POST:
       return state.map((post) => {
         if (post._id === action.payload.postId) {

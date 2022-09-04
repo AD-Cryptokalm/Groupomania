@@ -3,9 +3,7 @@ import { getPosts } from "../actions/post.action";
 import { useDispatch, useSelector } from "react-redux";
 import { isEmpty} from "./Utils"
 import Card from "./Post/Card";
-
 import '../styles/cardPost.css'
-
 
 export default function Thread() {
   const [loadPost, setLoadPost] = useState(true);

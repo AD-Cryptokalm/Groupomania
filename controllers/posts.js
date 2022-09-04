@@ -1,4 +1,3 @@
-// const User = require("../models/userModel");
 const postModel = require("../models/Post");
 const ObjectId = require("mongoose").Types.ObjectId;
 const fs = require("fs");
@@ -12,9 +11,6 @@ const MIME_TYPES = {
   "image/png": "png",
   "image/gif": "gif",
 };
-
-
-
 
 exports.getPost = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))

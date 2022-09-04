@@ -4,8 +4,6 @@ import { useContext } from "react";
 import { UidContext } from "./AppContext";
 import Logout from "./Log/Logout";
 import { useSelector } from "react-redux";
-// import axios from "axios";
-// import axios from "axios";
 
 export default function NavBar() {
   const uid = useContext(UidContext);

@@ -15,7 +15,6 @@
     .container-form-update {
         justify-content: start;
     }
-
 }
 
 .form-update-profil {
@@ -34,12 +33,6 @@
     width: 140px;
     border-radius: 25px;
     margin: 1rem auto;
-   
-   
-    
-    /* padding: 5rem; */
-    
-
 }
 
 .imageProfilUrl img{

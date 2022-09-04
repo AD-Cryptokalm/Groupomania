@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { UidContext } from "../components/AppContext";
 import Home from "./Home";
 import "../styles/half-logo.css";
-// import UpdateProfil from "../components/Profil/UpdateProfil";
 
 export default function Connexion() {
   const uid = useContext(UidContext);
