@@ -2,7 +2,7 @@ import Log from "../components/Log/Auth";
 import { useContext } from "react";
 import { UidContext } from "../components/AppContext";
 import Home from "./Home";
-import "../styles/half-logo.css";
+import "../styles/anim-logo.css";
 
 export default function Connexion() {
   const uid = useContext(UidContext);

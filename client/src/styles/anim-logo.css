@@ -39,3 +39,9 @@
 .anim-logo img {
     width: 54rem;
 }
+
+@media only screen and (max-width: 663px){ 
+    .anim-logo img {
+        width: 40rem;
+    }
+}
