@@ -32,7 +32,6 @@ const Card = ({ post }) => {
   const handlePicturePost = (e) => {
     e.preventDefault();
     const data = new FormData();
-    console.log(post._id);
     data.append("name", post.userId);
     data.append("_id", post._id);
     data.append("file", file);

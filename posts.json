@@ -1,0 +1,222 @@
+[{
+  "_id": {
+    "$oid": "631692fb18fc69731f1ed056"
+  },
+  "userId": "631691a518fc69731f1ed046",
+  "message": "Bonjour à tous, je viens d'intégrer l'équipe de nuit et \r\nj'ai hâte de tous vous connaitre.",
+  "picture": "",
+  "userlikers": [
+    "6316958c18fc69731f1ed086",
+    "6316932f18fc69731f1ed05b",
+    "631697cf18fc69731f1ed0b9",
+    "6316994618fc69731f1ed0de"
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1662423803004"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1662425609009"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6316949718fc69731f1ed066"
+  },
+  "userId": "6316932f18fc69731f1ed05b",
+  "message": "Bonjour à tous et merci pour votre aide au service expédition.",
+  "picture": "./uploads/posts/6316932f18fc69731f1ed05b1662424215292.jpg",
+  "userlikers": [
+    "6316932f18fc69731f1ed05b",
+    "631697cf18fc69731f1ed0b9",
+    "631691a518fc69731f1ed046",
+    "63169bd618fc69731f1ed118"
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1662424215296"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1662426171928"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6316954b18fc69731f1ed080"
+  },
+  "userId": "6310a180142c43d1099d9296",
+  "message": "Salut tout le monde ! Profitez de notre nouveau réseau social pour partager \r\ntout ce que vous voulez !",
+  "picture": "",
+  "userlikers": [
+    "6316958c18fc69731f1ed086",
+    "6316932f18fc69731f1ed05b"
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1662424395528"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1662424825448"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6316966a18fc69731f1ed095"
+  },
+  "userId": "6316958c18fc69731f1ed086",
+  "message": "Ca y est départ en vacance pour 15 jours!!!",
+  "picture": "./uploads/posts/6316958c18fc69731f1ed0861662424682852.jpg",
+  "userlikers": [
+    "6316932f18fc69731f1ed05b",
+    "631697cf18fc69731f1ed0b9",
+    "6316994618fc69731f1ed0de"
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1662424682856"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1662425602055"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631697a018fc69731f1ed0b0"
+  },
+  "userId": "6316932f18fc69731f1ed05b",
+  "message": "Salut les bosseurs...bonne journée à tous! Attention aux fortes chaleurs.\r\nDes fontaines à eau ont été installées dans toute l'entreprise.",
+  "picture": "",
+  "userlikers": [
+    "6316994618fc69731f1ed0de",
+    "631691a518fc69731f1ed046"
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1662424992115"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1662425946239"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6316984418fc69731f1ed0c4"
+  },
+  "userId": "631697cf18fc69731f1ed0b9",
+  "message": "Bonjour à vous! Pour ceux qui sont intéressés, nous organisons \r\nune sortie resto mexicain vendredi soir!",
+  "picture": "./uploads/posts/631697cf18fc69731f1ed0b91662425156124.jpg",
+  "userlikers": [
+    "6316994618fc69731f1ed0de",
+    "631691a518fc69731f1ed046"
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1662425156134"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1662425948089"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "631699f518fc69731f1ed0ee"
+  },
+  "userId": "6316994618fc69731f1ed0de",
+  "message": "Moi je vais partir en vacance là-bas la prochain fois!",
+  "picture": "./uploads/posts/6316994618fc69731f1ed0de1662425589848.jpg",
+  "userlikers": [
+    "631691a518fc69731f1ed046",
+    "63169bd618fc69731f1ed118",
+    "6316932f18fc69731f1ed05b"
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1662425589854"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1662426307858"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63169b3d18fc69731f1ed104"
+  },
+  "userId": "631691a518fc69731f1ed046",
+  "message": "Moi je viens avec toi Mattis...mdr! 🤩",
+  "picture": "",
+  "userlikers": [
+    "63169bd618fc69731f1ed118"
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1662425917552"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1662426166931"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63169c2818fc69731f1ed125"
+  },
+  "userId": "63169bd618fc69731f1ed118",
+  "message": "Moi j'étais là...",
+  "picture": "./uploads/posts/63169bd618fc69731f1ed1181662426152314.jpg",
+  "userlikers": [
+    "6316932f18fc69731f1ed05b"
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1662426152320"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1662426305401"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63169cbc18fc69731f1ed13c"
+  },
+  "userId": "6316932f18fc69731f1ed05b",
+  "message": "Waouh c'est super beau! C'est où?",
+  "picture": "",
+  "userlikers": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1662426300171"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1662426300171"
+    }
+  },
+  "__v": 0
+}]

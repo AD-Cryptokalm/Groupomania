@@ -22,6 +22,7 @@ mongoose
 // créer une application express
 const app = express();
 
+app.use(helmet());
 
 const corsOptions = {
   origin: process.env.CLIENT_URL,
@@ -32,20 +33,7 @@ const corsOptions = {
   'preflightContinue': false
 }
 app.use(cors(corsOptions));
-// autorisé l'utilisateur a se servir de notre Api
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", `${process.env.CLIENT_URL}`);
-//   res.header("Access-Control-Allow-Credentials", true);
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
-//   );
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, PUT, DELETE, PATCH, OPTIONS"
-//   );
-//   next();
-// });
+
 
 app.use(express.json());
 app.use(cookieParser());
@@ -61,7 +49,6 @@ app.use("/api/post", postsRoutes);
 app.use("/api/user", userRoutes);
 
 
-app.use(helmet());
 
 
 module.exports = app;
