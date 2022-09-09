@@ -4,7 +4,7 @@ import Home from "../../pages/Home";
 import Profil from "../../pages/Profil";
 import NavBar from "../NavBar";
 
-export default function Auth() {
+export default function Index() {
 
   return (
       <BrowserRouter>

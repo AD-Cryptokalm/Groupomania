@@ -34,9 +34,9 @@ export default function UpdateProfil() {
               value={pseudo}
             />
             <div className="pseudo error"></div>
+          <input type="submit" value="Modifier pseudo" />
           </form>
           
-          <input type="submit" value="Modifier pseudo" />
         </div>
       </div>
     </div>

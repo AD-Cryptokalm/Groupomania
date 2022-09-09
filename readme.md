@@ -23,9 +23,8 @@ A la base du projet : npm install
 
 Démarrer le server : npm start
 
-Démarrer le front : cd client + npm start
+Démarrer le front : http://localhost:3001/
 
-Lorsque le terminal affiche: Would you like to run the app on another port instead? » (Y/n)
-Taper Y pour lancer sur le port 3001
+
 
 
